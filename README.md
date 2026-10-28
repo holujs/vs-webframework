@@ -16,12 +16,12 @@ The shorter the cold-start time, the better the frameworks are suited for server
 | framework            | result, ms    |
 |----------------------|:-------------:|
 | koa v2.15            |  4            |
-| express v4.19        |  5            |
+| express v5.2         |  5            |
 | hapi v21.3           |  22           |
-| holu v0.1            |  30           |
-| fastify v4.26        |  67           |
-| nest v10.3 + fastify |  89           |
-| nest v10.3 + express |  108          |
+| holu v0.3            |  30           |
+| fastify v5.12        |  67           |
+| nest v12.3 + fastify |  89           |
+| nest v12.3 + express |  108          |
 
 For now, this benchmark is run manually, for example:
 
