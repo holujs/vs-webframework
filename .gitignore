@@ -3,4 +3,5 @@ dist*
 *.tgz
 *.log
 sync.sh
-.yarn/*
+.yarn/
+results/runs/
