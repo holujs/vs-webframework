@@ -43,9 +43,42 @@ Scenario names are `perRoute` and `perRequest`. Historical `hello`/`request`
 samples are displayed under the new names when regenerating charts and summaries;
 their original names remain recorded in `run.json`.
 
-Runs are ignored by Git. To publish an experiment, copy its complete directory to
-`results/published/<descriptive-name>/` and commit the JSON together with its generated reports.
+Local runs are ignored by Git. Publish the latest successful result with:
+
+```bash
+npm run results:publish
+# Optional source and publication name:
+npm run results:publish -- results/runs/<experiment-directory> <descriptive-name>
+npm run results:publish -- --name <descriptive-name>
+```
+
+The source and name are optional. The command selects the most recent successful
+experiment from local and published data, ordered by measurement time. It generates
+a name from that timestamp, or reuses the existing name for identical published
+data. Repeating the command, including in a fresh clone, does not repeat a benchmark
+when successful data is available.
+
+If no successful experiment exists, it runs the compact example first: Node.js,
+Fastify, NestJS (`platform-node`), and Holu in `perRoute`, both HTTP profiles,
+5 seconds of warmup and 10 seconds of measurement per repetition, 3 repetitions.
+Budget about 6 minutes plus startup. See the root README for the timing rationale
+and longer-run guidance.
+
+The command copies the complete experiment into
+`results/published/<name>/`, regenerates its summary/chart, and updates
+the latest-result block in the root README. Commit the published directory and
+the root README together, then push them to GitHub. The command does not perform
+Git commits or network uploads. Existing datasets cannot be overwritten with different data.
+
+Only completed, nonempty runs without failed samples or wrk errors are accepted.
+The README embeds the chart and links to the report and raw JSON from the newest
+successful published experiment, ordered by `finishedAt` with `startedAt` as a
+fallback. Publishing an older experiment preserves the newer README selection.
+
 Rebuild reports with `npm run report -- results/published/<descriptive-name>`.
+After manual changes to published directories, run `npm run results:latest` to
+refresh the README. `npm run check` verifies that the block is current. Generated
+published artifacts are excluded from Prettier; regenerate them from `run.json`.
 
 Use the same runtime, lockfile, machine, workload, and connection profile when
 comparing experiments. The old root-level PNG files are historical results

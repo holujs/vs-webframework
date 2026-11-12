@@ -1,0 +1,1266 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-12T22:13:34.605Z",
+  "complete": true,
+  "metadata": {
+    "node": "v26.13.1",
+    "versions": {
+      "node": "26.13.1",
+      "acorn": "8.19.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.9",
+      "brotli": "1.2.1",
+      "cldr": "48.0",
+      "icu": "78.3",
+      "libffi": "3.8.0",
+      "lief": "1.0.0",
+      "llhttp": "9.4.4",
+      "merve": "1.2.2",
+      "modules": "147",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "3.5.9",
+      "simdjson": "5.0.3",
+      "simdutf": "7.7.0",
+      "sqlite": "3.54.1",
+      "tz": "2026e",
+      "undici": "8.12.4",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "14.6.202.34-node.40",
+      "zlib": "1.3.2.1-motley-456ae73",
+      "zstd": "1.5.7"
+    },
+    "execPath": "/home/kt/.nvm/versions/node/v26.13.1/bin/node",
+    "platform": "linux",
+    "architecture": "x64",
+    "osRelease": "6.8.0-149-generic",
+    "cpuModels": [
+      "Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz"
+    ],
+    "logicalCpus": 4,
+    "memoryBytes": 16683769856,
+    "freeMemoryBytes": 13783814144,
+    "commit": "adcd657f9b68a424cfe0ec7c61102e29995110e7",
+    "dirty": true,
+    "npm": "11.20.0",
+    "wrk": "wrk debian/4.1.0-3build1 [epoll] Copyright (C) 2012 Will Glozer\nUsage: wrk <options> <url>                            \n  Options:                                            \n    -c, --connections <N>  Connections to keep open   \n    -d, --duration    <T>  Duration of test           \n    -t, --threads     <N>  Number of threads to use   \n                                                      \n    -s, --script      <S>  Load Lua script file       \n    -H, --header      <H>  Add header to request      \n        --latency          Print latency statistics   \n        --timeout     <T>  Socket/request timeout     \n    -v, --version          Print version details      \n                                                      \n  Numeric arguments may include a SI unit (1k, 1M, 1G)\n  Time arguments may include a time unit (2s, 2m, 2h)",
+    "lockfileSha256": "c226f0f1c0a8841fd7daa0111f18219e122e58eff3f408f98a3b0de7a143f61d",
+    "dependencyTree": {
+      "node_modules/@borewit/text-codec": "0.2.2",
+      "node_modules/@cacheable/utils": "2.5.0",
+      "node_modules/@eslint-community/eslint-utils": "4.10.1",
+      "node_modules/@cacheable/memory": "2.2.0",
+      "node_modules/@eslint/config-helpers": "0.7.0",
+      "node_modules/@eslint-community/regexpp": "4.12.3",
+      "node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys": "3.4.3",
+      "node_modules/@eslint/config-array": "0.23.5",
+      "node_modules/@fastify/ajv-compiler": "4.0.6",
+      "node_modules/@fastify/cors": "11.3.1",
+      "node_modules/@eslint/core": "1.2.1",
+      "node_modules/@fastify/error": "4.2.0",
+      "node_modules/@fastify/fast-json-stringify-compiler": "5.1.0",
+      "node_modules/@eslint/object-schema": "3.0.5",
+      "node_modules/@eslint/plugin-kit": "0.7.3",
+      "node_modules/@fastify/deepmerge": "3.2.4",
+      "node_modules/@fastify/forwarded": "3.0.2",
+      "node_modules/@fastify/formbody": "9.0.1",
+      "node_modules/@fastify/middie": "9.3.6",
+      "node_modules/@fastify/merge-json-schemas": "0.2.1",
+      "node_modules/@hapi/accept": "6.0.3",
+      "node_modules/@hapi/boom": "10.0.1",
+      "node_modules/@fastify/proxy-addr": "5.1.2",
+      "node_modules/@hapi/b64": "6.0.1",
+      "node_modules/@hapi/bounce": "3.0.2",
+      "node_modules/@hapi/catbox": "12.1.1",
+      "node_modules/@hapi/bourne": "3.0.0",
+      "node_modules/@hapi/ammo": "6.0.1",
+      "node_modules/@hapi/catbox-memory": "6.0.2",
+      "node_modules/@hapi/content": "6.0.2",
+      "node_modules/@hapi/hapi": "21.4.10",
+      "node_modules/@hapi/cryptiles": "6.0.3",
+      "node_modules/@hapi/call": "9.0.1",
+      "node_modules/@hapi/iron": "7.0.1",
+      "node_modules/@hapi/mimos": "7.0.1",
+      "node_modules/@hapi/file": "3.0.0",
+      "node_modules/@hapi/heavy": "8.0.1",
+      "node_modules/@hapi/podium": "5.0.2",
+      "node_modules/@hapi/shot": "6.0.3",
+      "node_modules/@hapi/nigel": "5.0.1",
+      "node_modules/@hapi/statehood": "8.2.1",
+      "node_modules/@hapi/pez": "6.1.1",
+      "node_modules/@hapi/hoek": "11.0.7",
+      "node_modules/@hapi/somever": "4.1.1",
+      "node_modules/@hapi/subtext": "8.1.3",
+      "node_modules/@hapi/topo": "6.0.2",
+      "node_modules/@hapi/teamwork": "6.0.1",
+      "node_modules/@holu/core": "0.3.0",
+      "node_modules/@holu/rest": "0.3.0",
+      "node_modules/@hapi/vise": "5.0.1",
+      "node_modules/@hapi/wreck": "18.1.2",
+      "node_modules/@hapi/validate": "2.0.1",
+      "node_modules/@humanfs/node": "0.16.8",
+      "node_modules/@humanfs/types": "0.15.0",
+      "node_modules/@humanfs/core": "0.19.2",
+      "node_modules/@humanwhocodes/module-importer": "1.0.1",
+      "node_modules/@koa/router": "15.7.0",
+      "node_modules/@humanwhocodes/retry": "0.4.3",
+      "node_modules/@nestjs/common": "12.3.2",
+      "node_modules/@nestjs/core": "12.3.2",
+      "node_modules/@nestjs/platform-express": "12.3.2",
+      "node_modules/@nestjs/platform-fastify": "12.3.2",
+      "node_modules/@nestjs/platform-node": "12.3.2",
+      "node_modules/@keyv/serialize": "1.1.1",
+      "node_modules/@keyv/bigmap": "1.3.1",
+      "node_modules/@standard-schema/spec": "1.1.0",
+      "node_modules/@lukeed/csprng": "1.1.0",
+      "node_modules/@nestjs/platform-node/node_modules/content-type": "2.1.0",
+      "node_modules/@ts-stack/chain-error": "1.5.1",
+      "node_modules/@types/accepts": "1.3.7",
+      "node_modules/@types/body-parser": "1.19.6",
+      "node_modules/@types/connect": "3.4.38",
+      "node_modules/@pinojs/redact": "0.4.0",
+      "node_modules/@types/cookies": "0.9.2",
+      "node_modules/@types/content-disposition": "0.5.9",
+      "node_modules/@tokenizer/inflate": "0.5.2",
+      "node_modules/@types/express": "5.0.6",
+      "node_modules/@types/express-serve-static-core": "5.1.3",
+      "node_modules/@types/http-assert": "1.5.6",
+      "node_modules/@types/http-errors": "2.0.5",
+      "node_modules/@tokenizer/token": "0.3.0",
+      "node_modules/@types/keygrip": "1.0.6",
+      "node_modules/@types/koa": "3.0.3",
+      "node_modules/@types/esrecurse": "4.3.1",
+      "node_modules/@types/koa-compose": "3.2.9",
+      "node_modules/@types/node": "25.9.5",
+      "node_modules/@types/qs": "6.15.1",
+      "node_modules/@types/range-parser": "1.2.7",
+      "node_modules/@types/send": "1.2.1",
+      "node_modules/@types/serve-static": "2.2.0",
+      "node_modules/@types/koa__router": "12.0.5",
+      "node_modules/@types/estree": "1.0.10",
+      "node_modules/@types/json-schema": "7.0.15",
+      "node_modules/@typescript-eslint/eslint-plugin": "8.72.2",
+      "node_modules/@typescript-eslint/parser": "8.72.2",
+      "node_modules/@typescript-eslint/project-service": "8.72.2",
+      "node_modules/@typescript-eslint/eslint-plugin/node_modules/ignore": "7.0.14",
+      "node_modules/@typescript-eslint/scope-manager": "8.72.2",
+      "node_modules/@typescript-eslint/tsconfig-utils": "8.72.2",
+      "node_modules/@typescript-eslint/type-utils": "8.72.2",
+      "node_modules/@typescript-eslint/typescript-estree": "8.72.2",
+      "node_modules/@typescript-eslint/types": "8.72.2",
+      "node_modules/accepts": "2.0.0",
+      "node_modules/@typescript-eslint/utils": "8.72.2",
+      "node_modules/abstract-logging": "2.0.1",
+      "node_modules/@typescript-eslint/visitor-keys": "8.72.2",
+      "node_modules/ajv": "8.20.0",
+      "node_modules/ajv/node_modules/fast-uri": "3.1.5",
+      "node_modules/acorn-jsx": "5.3.2",
+      "node_modules/acorn": "8.19.0",
+      "node_modules/append-field": "1.0.0",
+      "node_modules/assert-plus": "1.0.0",
+      "node_modules/ajv-formats": "3.0.1",
+      "node_modules/body-parser": "2.3.0",
+      "node_modules/atomic-sleep": "1.0.0",
+      "node_modules/avvio": "9.3.0",
+      "node_modules/balanced-match": "4.0.4",
+      "node_modules/brace-expansion": "5.0.9",
+      "node_modules/busboy": "1.6.0",
+      "node_modules/bytes": "3.1.2",
+      "node_modules/call-bind-apply-helpers": "1.0.2",
+      "node_modules/content-disposition": "2.0.1",
+      "node_modules/body-parser/node_modules/content-type": "2.0.0",
+      "node_modules/cacheable": "2.5.0",
+      "node_modules/content-type": "1.0.5",
+      "node_modules/call-bound": "1.0.4",
+      "node_modules/cookies": "0.9.1",
+      "node_modules/cookie": "0.7.2",
+      "node_modules/cookie-signature": "1.2.2",
+      "node_modules/cross-spawn": "7.0.6",
+      "node_modules/cors": "2.8.6",
+      "node_modules/debug": "4.4.3",
+      "node_modules/deep-equal": "1.0.1",
+      "node_modules/delegates": "1.0.0",
+      "node_modules/deep-is": "0.1.4",
+      "node_modules/dequal": "2.0.3",
+      "node_modules/depd": "2.0.0",
+      "node_modules/ee-first": "1.1.1",
+      "node_modules/destroy": "1.2.0",
+      "node_modules/encodeurl": "2.0.0",
+      "node_modules/dunder-proto": "1.0.1",
+      "node_modules/es-define-property": "1.0.1",
+      "node_modules/es-object-atoms": "1.1.2",
+      "node_modules/es-errors": "1.3.0",
+      "node_modules/escape-html": "1.0.3",
+      "node_modules/eslint": "10.14.0",
+      "node_modules/eslint-visitor-keys": "5.0.1",
+      "node_modules/eslint/node_modules/escape-string-regexp": "4.0.0",
+      "node_modules/eslint/node_modules/json-schema-traverse": "0.4.1",
+      "node_modules/eslint/node_modules/ajv": "6.15.0",
+      "node_modules/eslint-scope": "9.1.2",
+      "node_modules/espree": "11.2.0",
+      "node_modules/estraverse": "5.3.0",
+      "node_modules/esrecurse": "4.3.0",
+      "node_modules/express": "5.3.0",
+      "node_modules/esquery": "1.7.0",
+      "node_modules/esutils": "2.0.3",
+      "node_modules/fast-decode-uri-component": "1.0.1",
+      "node_modules/etag": "1.8.1",
+      "node_modules/fast-json-stringify": "7.0.1",
+      "node_modules/express/node_modules/content-type": "2.1.0",
+      "node_modules/fast-deep-equal": "3.1.3",
+      "node_modules/fast-querystring": "1.1.2",
+      "node_modules/fast-json-stable-stringify": "2.1.0",
+      "node_modules/fastify": "5.12.7",
+      "node_modules/fast-levenshtein": "2.0.6",
+      "node_modules/fast-safe-stringify": "2.1.1",
+      "node_modules/fastify-plugin": "6.0.1",
+      "node_modules/fast-uri": "4.1.2",
+      "node_modules/fdir": "6.5.0",
+      "node_modules/fastq": "1.20.1",
+      "node_modules/find-my-way": "9.10.0",
+      "node_modules/file-type": "22.2.0",
+      "node_modules/finalhandler": "2.1.1",
+      "node_modules/file-entry-cache": "11.1.5",
+      "node_modules/find-up": "5.0.0",
+      "node_modules/flatted": "3.4.4",
+      "node_modules/forwarded": "0.2.0",
+      "node_modules/fresh": "2.0.0",
+      "node_modules/flat-cache": "6.1.23",
+      "node_modules/function-bind": "1.1.2",
+      "node_modules/get-intrinsic": "1.3.0",
+      "node_modules/get-proto": "1.0.1",
+      "node_modules/glob-parent": "6.0.2",
+      "node_modules/gopd": "1.2.0",
+      "node_modules/has-symbols": "1.1.0",
+      "node_modules/http-assert": "1.5.0",
+      "node_modules/hookified": "1.15.1",
+      "node_modules/hashery": "1.5.1",
+      "node_modules/hasown": "2.0.4",
+      "node_modules/http-errors": "2.0.1",
+      "node_modules/http-assert/node_modules/statuses": "1.5.0",
+      "node_modules/iconv-lite": "0.7.3",
+      "node_modules/http-assert/node_modules/depd": "1.1.2",
+      "node_modules/http-assert/node_modules/http-errors": "1.8.1",
+      "node_modules/ieee754": "1.2.1",
+      "node_modules/ignore": "5.3.2",
+      "node_modules/imurmurhash": "0.1.4",
+      "node_modules/inherits": "2.0.4",
+      "node_modules/is-glob": "4.0.3",
+      "node_modules/ipaddr.js": "2.5.0",
+      "node_modules/is-extglob": "2.1.1",
+      "node_modules/is-promise": "4.0.0",
+      "node_modules/iterare": "1.2.1",
+      "node_modules/json-schema-ref-resolver": "3.0.0",
+      "node_modules/isexe": "2.0.0",
+      "node_modules/keygrip": "1.1.0",
+      "node_modules/koa": "3.2.1",
+      "node_modules/koa-compose": "4.1.0",
+      "node_modules/json-stable-stringify-without-jsonify": "1.0.1",
+      "node_modules/json-schema-traverse": "1.0.0",
+      "node_modules/keyv": "5.6.0",
+      "node_modules/koa/node_modules/accepts": "1.3.8",
+      "node_modules/koa/node_modules/content-disposition": "1.0.1",
+      "node_modules/koa/node_modules/fresh": "0.5.2",
+      "node_modules/koa/node_modules/accepts/node_modules/mime-types": "2.1.35",
+      "node_modules/light-my-request": "6.8.0",
+      "node_modules/koa/node_modules/negotiator": "0.6.3",
+      "node_modules/koa/node_modules/mime-db": "1.52.0",
+      "node_modules/levn": "0.4.1",
+      "node_modules/locate-path": "6.0.0",
+      "node_modules/light-my-request/node_modules/cookie": "2.0.1",
+      "node_modules/load-esm": "1.0.3",
+      "node_modules/media-typer": "1.1.1",
+      "node_modules/math-intrinsics": "1.1.0",
+      "node_modules/merge-descriptors": "2.0.0",
+      "node_modules/mime-types": "3.0.2",
+      "node_modules/mime-db": "1.54.0",
+      "node_modules/minimatch": "10.2.6",
+      "node_modules/multer": "2.5.0",
+      "node_modules/ms": "2.1.3",
+      "node_modules/multer/node_modules/mime-db": "1.52.0",
+      "node_modules/multer/node_modules/mime-types": "2.1.35",
+      "node_modules/multer/node_modules/type-is": "1.6.18",
+      "node_modules/multer/node_modules/media-typer": "0.3.0",
+      "node_modules/natural-compare": "1.4.0",
+      "node_modules/negotiator": "1.0.0",
+      "node_modules/object-assign": "4.1.1",
+      "node_modules/object-inspect": "1.13.4",
+      "node_modules/on-exit-leak-free": "2.1.2",
+      "node_modules/on-finished": "2.4.1",
+      "node_modules/once": "1.4.0",
+      "node_modules/optionator": "0.9.4",
+      "node_modules/parseurl": "1.3.3",
+      "node_modules/p-limit": "3.1.0",
+      "node_modules/path-to-regexp": "8.4.2",
+      "node_modules/path-exists": "4.0.0",
+      "node_modules/pino": "10.3.1",
+      "node_modules/p-locate": "5.0.0",
+      "node_modules/path-key": "3.1.1",
+      "node_modules/pino-std-serializers": "7.1.0",
+      "node_modules/prettier": "3.10.1",
+      "node_modules/picomatch": "4.0.7",
+      "node_modules/prelude-ls": "1.2.1",
+      "node_modules/pino-abstract-transport": "3.0.0",
+      "node_modules/punycode": "2.3.1",
+      "node_modules/process-warning": "5.1.0",
+      "node_modules/proxy-addr": "2.0.8",
+      "node_modules/qs": "6.16.0",
+      "node_modules/proxy-addr/node_modules/ipaddr.js": "1.9.1",
+      "node_modules/qified": "0.10.1",
+      "node_modules/range-parser": "1.3.0",
+      "node_modules/quick-format-unescaped": "4.0.4",
+      "node_modules/reflect-metadata": "0.2.2",
+      "node_modules/require-from-string": "2.0.2",
+      "node_modules/qified/node_modules/hookified": "2.2.0",
+      "node_modules/real-require": "0.2.0",
+      "node_modules/raw-body": "3.0.2",
+      "node_modules/ret": "0.5.0",
+      "node_modules/rxjs": "7.8.2",
+      "node_modules/router": "2.2.0",
+      "node_modules/reusify": "1.1.0",
+      "node_modules/rfdc": "1.4.1",
+      "node_modules/safe-stable-stringify": "2.5.0",
+      "node_modules/safe-regex2": "5.1.1",
+      "node_modules/safer-buffer": "2.1.2",
+      "node_modules/send": "1.2.1",
+      "node_modules/serve-static": "2.2.1",
+      "node_modules/secure-json-parse": "4.1.0",
+      "node_modules/setprototypeof": "1.2.0",
+      "node_modules/shebang-command": "2.0.0",
+      "node_modules/semver": "7.8.5",
+      "node_modules/set-cookie-parser": "3.2.1",
+      "node_modules/side-channel": "1.1.1",
+      "node_modules/side-channel-list": "1.0.1",
+      "node_modules/sonic-boom": "4.2.1",
+      "node_modules/side-channel-map": "1.0.1",
+      "node_modules/shebang-regex": "3.0.0",
+      "node_modules/side-channel-weakmap": "1.0.2",
+      "node_modules/split2": "4.2.0",
+      "node_modules/thread-stream": "4.2.0",
+      "node_modules/streamsearch": "1.1.0",
+      "node_modules/statuses": "2.0.2",
+      "node_modules/strtok3": "10.6.3",
+      "node_modules/tinyglobby": "0.2.17",
+      "node_modules/toidentifier": "1.0.1",
+      "node_modules/thread-stream/node_modules/real-require": "1.0.0",
+      "node_modules/toad-cache": "3.7.4",
+      "node_modules/token-types": "6.1.2",
+      "node_modules/tslib": "2.8.1",
+      "node_modules/type-check": "0.4.0",
+      "node_modules/ts-api-utils": "2.5.0",
+      "node_modules/typescript": "5.9.3",
+      "node_modules/tsscmp": "1.0.6",
+      "node_modules/type-is": "2.1.0",
+      "node_modules/uid": "2.0.2",
+      "node_modules/undici-types": "7.24.6",
+      "node_modules/typescript-eslint": "8.72.2",
+      "node_modules/uint8array-extras": "1.6.0",
+      "node_modules/type-is/node_modules/content-type": "2.0.0",
+      "node_modules/unpipe": "1.0.0",
+      "node_modules/vary": "1.1.2",
+      "node_modules/uri-js": "4.4.1",
+      "node_modules/which": "2.0.2",
+      "node_modules/wrappy": "1.0.2",
+      "node_modules/word-wrap": "1.2.5",
+      "node_modules/yocto-queue": "0.1.0"
+    },
+    "environment": {
+      "NODE_ENV": "production",
+      "NODE_OPTIONS": "",
+      "host": "127.0.0.1"
+    }
+  },
+  "options": {
+    "frameworks": [
+      {
+        "name": "node",
+        "entry": "file:///srv/git/holujs/vs-webframework/dist/apps/node.mjs",
+        "packages": [],
+        "scenarios": [
+          "perRoute"
+        ]
+      },
+      {
+        "name": "fastify",
+        "entry": "file:///srv/git/holujs/vs-webframework/dist/apps/fastify.mjs",
+        "packages": [
+          "fastify"
+        ],
+        "scenarios": [
+          "perRoute"
+        ]
+      },
+      {
+        "name": "nestjs-node",
+        "entry": "file:///srv/git/holujs/vs-webframework/dist/apps/nestjs/node.mjs",
+        "packages": [
+          "@nestjs/common",
+          "@nestjs/core",
+          "@nestjs/platform-node"
+        ],
+        "scenarios": [
+          "perRoute",
+          "perRequest"
+        ]
+      },
+      {
+        "name": "holu",
+        "entry": "file:///srv/git/holujs/vs-webframework/dist/apps/holu/main.mjs",
+        "packages": [
+          "@holu/core",
+          "@holu/rest"
+        ],
+        "scenarios": [
+          "perRoute",
+          "perRequest"
+        ]
+      }
+    ],
+    "profiles": [
+      "keep-alive",
+      "close"
+    ],
+    "scenarios": [
+      "perRoute"
+    ],
+    "mode": "all",
+    "duration": 10,
+    "warmup": 5,
+    "repeats": 3,
+    "threads": 4,
+    "connections": 100,
+    "seed": 42,
+    "startupTimeoutMs": 15000,
+    "output": "/srv/git/holujs/vs-webframework/results/runs/2026-11-12T22-13-34.588Z-example-iyFu30",
+    "wrk": "wrk",
+    "help": false,
+    "runtime": "/home/kt/.nvm/versions/node/v26.13.1/bin/node"
+  },
+  "skipped": [],
+  "runs": [
+    {
+      "framework": "nestjs-node",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 1,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:42139/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    13.04ms    2.15ms  31.23ms   88.90%\n    Req/Sec     1.91k   214.47     2.27k    78.50%\n  Latency Distribution\n     50%   12.58ms\n     75%   13.64ms\n     90%   15.03ms\n     99%   22.94ms\n  38098 requests in 5.01s, 5.41MB read\nRequests/sec:   7605.87\nTransfer/sec:      1.08MB\nBENCH_RESULT {\"durationSeconds\":5.009029,\"requests\":38098,\"bytes\":5676602,\"requestsPerSecond\":7605.865328,\"latencyP50Ms\":12.581000,\"latencyP95Ms\":16.412000,\"latencyP99Ms\":22.940000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:42139/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.14ms    1.23ms  25.94ms   83.28%\n    Req/Sec     2.05k   133.66     2.53k    69.75%\n  Latency Distribution\n     50%   11.89ms\n     75%   12.87ms\n     90%   13.20ms\n     99%   16.52ms\n  81780 requests in 10.02s, 11.62MB read\nRequests/sec:   8165.52\nTransfer/sec:      1.16MB\nBENCH_RESULT {\"durationSeconds\":10.015278,\"requests\":81780,\"bytes\":12185220,\"requestsPerSecond\":8165.524711,\"latencyP50Ms\":11.886000,\"latencyP95Ms\":14.254000,\"latencyP99Ms\":16.516000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":42139,\"importMs\":932.2686249999999,\"appInitMs\":109.47707400000002}\n"
+      },
+      "startup": {
+        "processReadyMs": 1087.587699,
+        "importMs": 932.2686249999999,
+        "appInitMs": 109.47707400000002,
+        "firstRequestMs": 16.869863000000123,
+        "processFirstResponseMs": 1105.25244
+      },
+      "workload": {
+        "durationSeconds": 10.015278,
+        "requests": 81780,
+        "bytes": 12185220,
+        "requestsPerSecond": 8165.524711,
+        "latencyP50Ms": 11.886,
+        "latencyP95Ms": 14.254,
+        "latencyP99Ms": 16.516,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "holu",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 1,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:39525/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.81ms    2.23ms  30.58ms   82.60%\n    Req/Sec     2.11k   306.94     3.00k    75.00%\n  Latency Distribution\n     50%   11.39ms\n     75%   13.03ms\n     90%   13.91ms\n     99%   20.86ms\n  42008 requests in 5.01s, 5.97MB read\nRequests/sec:   8379.99\nTransfer/sec:      1.19MB\nBENCH_RESULT {\"durationSeconds\":5.012891,\"requests\":42008,\"bytes\":6259192,\"requestsPerSecond\":8379.994698,\"latencyP50Ms\":11.388000,\"latencyP95Ms\":15.279000,\"latencyP99Ms\":20.859000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:39525/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.39ms    1.27ms  23.39ms   80.67%\n    Req/Sec     2.19k   151.43     2.61k    66.75%\n  Latency Distribution\n     50%   11.19ms\n     75%   11.84ms\n     90%   12.51ms\n     99%   15.76ms\n  87118 requests in 10.02s, 12.38MB read\nRequests/sec:   8692.47\nTransfer/sec:      1.24MB\nBENCH_RESULT {\"durationSeconds\":10.022239,\"requests\":87118,\"bytes\":12980582,\"requestsPerSecond\":8692.468819,\"latencyP50Ms\":11.185000,\"latencyP95Ms\":12.998000,\"latencyP99Ms\":15.764000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":39525,\"importMs\":234.91025799999997,\"appInitMs\":20.33221100000003}\n"
+      },
+      "startup": {
+        "processReadyMs": 288.46381199999814,
+        "importMs": 234.91025799999997,
+        "appInitMs": 20.33221100000003,
+        "firstRequestMs": 8.205653999997594,
+        "processFirstResponseMs": 296.898581999998
+      },
+      "workload": {
+        "durationSeconds": 10.022239,
+        "requests": 87118,
+        "bytes": 12980582,
+        "requestsPerSecond": 8692.468819,
+        "latencyP50Ms": 11.185,
+        "latencyP95Ms": 12.998,
+        "latencyP99Ms": 15.764,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "holu",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 1,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:33479/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.93ms   13.94ms 252.11ms   98.20%\n    Req/Sec     7.53k     1.43k   10.18k    61.62%\n  Latency Distribution\n     50%    3.41ms\n     75%    3.51ms\n     90%    4.09ms\n     99%   75.80ms\n  148700 requests in 5.01s, 25.10MB read\nRequests/sec:  29673.04\nTransfer/sec:      5.01MB\nBENCH_RESULT {\"durationSeconds\":5.011283,\"requests\":148700,\"bytes\":26319900,\"requestsPerSecond\":29673.039818,\"latencyP50Ms\":3.407000,\"latencyP95Ms\":4.607000,\"latencyP99Ms\":75.804000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:33479/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.89ms    5.12ms 182.03ms   99.48%\n    Req/Sec     6.95k   751.58    12.87k    87.00%\n  Latency Distribution\n     50%    3.48ms\n     75%    3.80ms\n     90%    4.09ms\n     99%    4.49ms\n  276771 requests in 10.01s, 46.72MB read\nRequests/sec:  27637.27\nTransfer/sec:      4.67MB\nBENCH_RESULT {\"durationSeconds\":10.014410,\"requests\":276771,\"bytes\":48988467,\"requestsPerSecond\":27637.274687,\"latencyP50Ms\":3.480000,\"latencyP95Ms\":4.121000,\"latencyP99Ms\":4.495000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":33479,\"importMs\":155.054065,\"appInitMs\":20.41413}\n"
+      },
+      "startup": {
+        "processReadyMs": 208.32289400000082,
+        "importMs": 155.054065,
+        "appInitMs": 20.41413,
+        "firstRequestMs": 8.103882999999769,
+        "processFirstResponseMs": 217.09053700000004
+      },
+      "workload": {
+        "durationSeconds": 10.01441,
+        "requests": 276771,
+        "bytes": 48988467,
+        "requestsPerSecond": 27637.274687,
+        "latencyP50Ms": 3.48,
+        "latencyP95Ms": 4.121,
+        "latencyP99Ms": 4.495,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "nestjs-node",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 1,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:36207/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     6.66ms   18.54ms 312.66ms   97.92%\n    Req/Sec     5.71k     0.99k    8.24k    81.91%\n  Latency Distribution\n     50%    4.37ms\n     75%    4.71ms\n     90%    5.02ms\n     99%  106.68ms\n  113104 requests in 5.01s, 19.09MB read\nRequests/sec:  22582.77\nTransfer/sec:      3.81MB\nBENCH_RESULT {\"durationSeconds\":5.008420,\"requests\":113104,\"bytes\":20019408,\"requestsPerSecond\":22582.770614,\"latencyP50Ms\":4.369000,\"latencyP95Ms\":5.520000,\"latencyP99Ms\":106.676000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:36207/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.97ms    3.57ms 156.46ms   99.68%\n    Req/Sec     6.56k     0.91k    8.29k    68.25%\n  Latency Distribution\n     50%    4.01ms\n     75%    4.06ms\n     90%    4.39ms\n     99%    5.04ms\n  261337 requests in 10.01s, 44.11MB read\nRequests/sec:  26117.83\nTransfer/sec:      4.41MB\nBENCH_RESULT {\"durationSeconds\":10.006077,\"requests\":261337,\"bytes\":46256649,\"requestsPerSecond\":26117.828196,\"latencyP50Ms\":4.005000,\"latencyP95Ms\":4.700000,\"latencyP99Ms\":5.039000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":36207,\"importMs\":387.962441,\"appInitMs\":57.46580799999998}\n"
+      },
+      "startup": {
+        "processReadyMs": 489.16154699999606,
+        "importMs": 387.962441,
+        "appInitMs": 57.46580799999998,
+        "firstRequestMs": 7.685936000001675,
+        "processFirstResponseMs": 497.2028999999966
+      },
+      "workload": {
+        "durationSeconds": 10.006077,
+        "requests": 261337,
+        "bytes": 46256649,
+        "requestsPerSecond": 26117.828196,
+        "latencyP50Ms": 4.005,
+        "latencyP95Ms": 4.7,
+        "latencyP99Ms": 5.039,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "node",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 1,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:43593/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.85ms    1.90ms  28.68ms   86.81%\n    Req/Sec     2.10k   257.09     2.66k    75.00%\n  Latency Distribution\n     50%   11.18ms\n     75%   12.55ms\n     90%   13.82ms\n     99%   20.45ms\n  41873 requests in 5.01s, 5.95MB read\nRequests/sec:   8358.02\nTransfer/sec:      1.19MB\nBENCH_RESULT {\"durationSeconds\":5.009919,\"requests\":41873,\"bytes\":6239077,\"requestsPerSecond\":8358.019361,\"latencyP50Ms\":11.176000,\"latencyP95Ms\":14.773000,\"latencyP99Ms\":20.450000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:43593/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    10.77ms    1.02ms  15.49ms   68.41%\n    Req/Sec     2.31k   201.33     3.39k    77.50%\n  Latency Distribution\n     50%   10.83ms\n     75%   11.26ms\n     90%   11.92ms\n     99%   12.57ms\n  92050 requests in 10.02s, 13.08MB read\nRequests/sec:   9188.99\nTransfer/sec:      1.31MB\nBENCH_RESULT {\"durationSeconds\":10.017421,\"requests\":92050,\"bytes\":13715450,\"requestsPerSecond\":9188.991857,\"latencyP50Ms\":10.826000,\"latencyP95Ms\":12.003000,\"latencyP99Ms\":12.571000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":43593,\"importMs\":36.428987,\"appInitMs\":3.496984999999995}\n"
+      },
+      "startup": {
+        "processReadyMs": 81.41937000000325,
+        "importMs": 36.428987,
+        "appInitMs": 3.496984999999995,
+        "firstRequestMs": 5.770908999998937,
+        "processFirstResponseMs": 87.34438000000227
+      },
+      "workload": {
+        "durationSeconds": 10.017421,
+        "requests": 92050,
+        "bytes": 13715450,
+        "requestsPerSecond": 9188.991857,
+        "latencyP50Ms": 10.826,
+        "latencyP95Ms": 12.003,
+        "latencyP99Ms": 12.571,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "fastify",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 1,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:38295/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.09ms    2.50ms  38.15ms   85.21%\n    Req/Sec     2.07k   311.50     2.72k    74.50%\n  Latency Distribution\n     50%   11.33ms\n     75%   13.03ms\n     90%   14.28ms\n     99%   22.77ms\n  41137 requests in 5.01s, 5.85MB read\nRequests/sec:   8205.88\nTransfer/sec:      1.17MB\nBENCH_RESULT {\"durationSeconds\":5.013110,\"requests\":41137,\"bytes\":6129413,\"requestsPerSecond\":8205.884172,\"latencyP50Ms\":11.326000,\"latencyP95Ms\":15.412000,\"latencyP99Ms\":22.773000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:38295/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.11ms  844.00us  17.73ms   75.03%\n    Req/Sec     2.24k   129.04     2.84k    74.25%\n  Latency Distribution\n     50%   11.10ms\n     75%   11.39ms\n     90%   12.15ms\n     99%   13.29ms\n  89306 requests in 10.01s, 12.69MB read\nRequests/sec:   8919.98\nTransfer/sec:      1.27MB\nBENCH_RESULT {\"durationSeconds\":10.011911,\"requests\":89306,\"bytes\":13306594,\"requestsPerSecond\":8919.975417,\"latencyP50Ms\":11.099000,\"latencyP95Ms\":12.467000,\"latencyP99Ms\":13.294000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":38295,\"importMs\":146.480501,\"appInitMs\":137.98759499999997}\n"
+      },
+      "startup": {
+        "processReadyMs": 321.79081200000655,
+        "importMs": 146.480501,
+        "appInitMs": 137.98759499999997,
+        "firstRequestMs": 7.534014999997453,
+        "processFirstResponseMs": 329.5314789999975
+      },
+      "workload": {
+        "durationSeconds": 10.011911,
+        "requests": 89306,
+        "bytes": 13306594,
+        "requestsPerSecond": 8919.975417,
+        "latencyP50Ms": 11.099,
+        "latencyP95Ms": 12.467,
+        "latencyP99Ms": 13.294,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "node",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 1,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:35535/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.90ms   13.88ms 254.99ms   98.27%\n    Req/Sec     7.46k     0.96k   10.24k    86.93%\n  Latency Distribution\n     50%    3.17ms\n     75%    3.48ms\n     90%    3.81ms\n     99%   71.54ms\n  147860 requests in 5.01s, 24.96MB read\nRequests/sec:  29521.15\nTransfer/sec:      4.98MB\nBENCH_RESULT {\"durationSeconds\":5.008612,\"requests\":147860,\"bytes\":26171220,\"requestsPerSecond\":29521.152766,\"latencyP50Ms\":3.169000,\"latencyP95Ms\":4.108000,\"latencyP99Ms\":71.539000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:35535/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.69ms    5.79ms 192.95ms   99.45%\n    Req/Sec     7.51k     1.48k   35.02k    99.25%\n  Latency Distribution\n     50%    3.24ms\n     75%    3.55ms\n     90%    3.61ms\n     99%    4.24ms\n  299312 requests in 10.10s, 50.52MB read\nRequests/sec:  29642.58\nTransfer/sec:      5.00MB\nBENCH_RESULT {\"durationSeconds\":10.097365,\"requests\":299312,\"bytes\":52978224,\"requestsPerSecond\":29642.584971,\"latencyP50Ms\":3.243000,\"latencyP95Ms\":3.887000,\"latencyP99Ms\":4.242000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":35535,\"importMs\":36.841159,\"appInitMs\":3.50197}\n"
+      },
+      "startup": {
+        "processReadyMs": 79.06897800001025,
+        "importMs": 36.841159,
+        "appInitMs": 3.50197,
+        "firstRequestMs": 5.021213999993051,
+        "processFirstResponseMs": 84.28037900000345
+      },
+      "workload": {
+        "durationSeconds": 10.097365,
+        "requests": 299312,
+        "bytes": 52978224,
+        "requestsPerSecond": 29642.584971,
+        "latencyP50Ms": 3.243,
+        "latencyP95Ms": 3.887,
+        "latencyP99Ms": 4.242,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "fastify",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 1,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:36161/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     5.22ms   15.73ms 274.72ms   98.11%\n    Req/Sec     7.41k     1.47k   10.09k    70.85%\n  Latency Distribution\n     50%    3.35ms\n     75%    3.70ms\n     90%    4.31ms\n     99%   86.19ms\n  146957 requests in 5.01s, 24.81MB read\nRequests/sec:  29323.76\nTransfer/sec:      4.95MB\nBENCH_RESULT {\"durationSeconds\":5.011534,\"requests\":146957,\"bytes\":26011389,\"requestsPerSecond\":29323.755960,\"latencyP50Ms\":3.352000,\"latencyP95Ms\":4.598000,\"latencyP99Ms\":86.190000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:36161/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.82ms    4.75ms 174.07ms   99.53%\n    Req/Sec     7.03k     1.54k   29.57k    86.78%\n  Latency Distribution\n     50%    3.78ms\n     75%    3.86ms\n     90%    4.14ms\n     99%    4.58ms\n  280296 requests in 10.10s, 47.31MB read\nRequests/sec:  27752.76\nTransfer/sec:      4.68MB\nBENCH_RESULT {\"durationSeconds\":10.099753,\"requests\":280296,\"bytes\":49612392,\"requestsPerSecond\":27752.757914,\"latencyP50Ms\":3.779000,\"latencyP95Ms\":4.220000,\"latencyP99Ms\":4.578000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":36161,\"importMs\":71.55077200000001,\"appInitMs\":58.76365800000001}\n"
+      },
+      "startup": {
+        "processReadyMs": 168.27427700000408,
+        "importMs": 71.55077200000001,
+        "appInitMs": 58.76365800000001,
+        "firstRequestMs": 7.687057999995886,
+        "processFirstResponseMs": 176.22185800000443
+      },
+      "workload": {
+        "durationSeconds": 10.099753,
+        "requests": 280296,
+        "bytes": 49612392,
+        "requestsPerSecond": 27752.757914,
+        "latencyP50Ms": 3.779,
+        "latencyP95Ms": 4.22,
+        "latencyP99Ms": 4.578,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "fastify",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 2,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:45029/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.40ms    2.05ms  32.31ms   83.46%\n    Req/Sec     2.01k   250.33     2.50k    74.00%\n  Latency Distribution\n     50%   12.19ms\n     75%   13.11ms\n     90%   14.27ms\n     99%   21.12ms\n  40055 requests in 5.01s, 5.69MB read\nRequests/sec:   7989.53\nTransfer/sec:      1.14MB\nBENCH_RESULT {\"durationSeconds\":5.013436,\"requests\":40055,\"bytes\":5968195,\"requestsPerSecond\":7989.530534,\"latencyP50Ms\":12.194000,\"latencyP95Ms\":15.002000,\"latencyP99Ms\":21.118000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:45029/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.23ms    0.88ms  15.66ms   68.20%\n    Req/Sec     2.22k   119.51     2.52k    70.75%\n  Latency Distribution\n     50%   11.19ms\n     75%   11.58ms\n     90%   12.28ms\n     99%   13.27ms\n  88348 requests in 10.01s, 12.55MB read\nRequests/sec:   8821.74\nTransfer/sec:      1.25MB\nBENCH_RESULT {\"durationSeconds\":10.014807,\"requests\":88348,\"bytes\":13163852,\"requestsPerSecond\":8821.737653,\"latencyP50Ms\":11.188000,\"latencyP95Ms\":12.710000,\"latencyP99Ms\":13.272000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":45029,\"importMs\":72.930471,\"appInitMs\":58.47418999999999}\n"
+      },
+      "startup": {
+        "processReadyMs": 168.33324800000992,
+        "importMs": 72.930471,
+        "appInitMs": 58.47418999999999,
+        "firstRequestMs": 7.672190999990562,
+        "processFirstResponseMs": 176.27220300000045
+      },
+      "workload": {
+        "durationSeconds": 10.014807,
+        "requests": 88348,
+        "bytes": 13163852,
+        "requestsPerSecond": 8821.737653,
+        "latencyP50Ms": 11.188,
+        "latencyP95Ms": 12.71,
+        "latencyP99Ms": 13.272,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "nestjs-node",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 2,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:42137/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     7.00ms   21.12ms 332.64ms   97.75%\n    Req/Sec     5.86k     0.92k    8.07k    84.92%\n  Latency Distribution\n     50%    4.34ms\n     75%    4.42ms\n     90%    4.76ms\n     99%  125.60ms\n  116080 requests in 5.01s, 19.59MB read\nRequests/sec:  23164.89\nTransfer/sec:      3.91MB\nBENCH_RESULT {\"durationSeconds\":5.011032,\"requests\":116080,\"bytes\":20546160,\"requestsPerSecond\":23164.888989,\"latencyP50Ms\":4.343000,\"latencyP95Ms\":5.174000,\"latencyP99Ms\":125.600000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:42137/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.57ms    6.14ms 208.40ms   99.46%\n    Req/Sec     5.95k     0.86k   10.56k    81.00%\n  Latency Distribution\n     50%    4.35ms\n     75%    4.71ms\n     90%    4.76ms\n     99%    5.63ms\n  236935 requests in 10.02s, 39.99MB read\nRequests/sec:  23654.67\nTransfer/sec:      3.99MB\nBENCH_RESULT {\"durationSeconds\":10.016417,\"requests\":236935,\"bytes\":41937495,\"requestsPerSecond\":23654.666135,\"latencyP50Ms\":4.346000,\"latencyP95Ms\":5.059000,\"latencyP99Ms\":5.631000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":42137,\"importMs\":390.117969,\"appInitMs\":57.35006499999997}\n"
+      },
+      "startup": {
+        "processReadyMs": 484.3927160000021,
+        "importMs": 390.117969,
+        "appInitMs": 57.35006499999997,
+        "firstRequestMs": 7.724692999996478,
+        "processFirstResponseMs": 492.34068600001046
+      },
+      "workload": {
+        "durationSeconds": 10.016417,
+        "requests": 236935,
+        "bytes": 41937495,
+        "requestsPerSecond": 23654.666135,
+        "latencyP50Ms": 4.346,
+        "latencyP95Ms": 5.059,
+        "latencyP99Ms": 5.631,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "holu",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 2,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:46213/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.26ms    1.98ms  29.26ms   77.73%\n    Req/Sec     2.03k   232.49     2.53k    73.50%\n  Latency Distribution\n     50%   11.92ms\n     75%   13.17ms\n     90%   14.48ms\n     99%   19.89ms\n  40483 requests in 5.01s, 5.75MB read\nRequests/sec:   8072.92\nTransfer/sec:      1.15MB\nBENCH_RESULT {\"durationSeconds\":5.014668,\"requests\":40483,\"bytes\":6031967,\"requestsPerSecond\":8072.917290,\"latencyP50Ms\":11.916000,\"latencyP95Ms\":15.541000,\"latencyP99Ms\":19.887000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:46213/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.86ms    1.24ms  22.76ms   81.03%\n    Req/Sec     2.10k   140.88     2.52k    67.00%\n  Latency Distribution\n     50%   11.90ms\n     75%   12.54ms\n     90%   12.84ms\n     99%   15.85ms\n  83696 requests in 10.01s, 11.89MB read\nRequests/sec:   8361.36\nTransfer/sec:      1.19MB\nBENCH_RESULT {\"durationSeconds\":10.009860,\"requests\":83696,\"bytes\":12470704,\"requestsPerSecond\":8361.355703,\"latencyP50Ms\":11.905000,\"latencyP95Ms\":13.557000,\"latencyP99Ms\":15.855000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":46213,\"importMs\":154.383298,\"appInitMs\":20.885807999999997}\n"
+      },
+      "startup": {
+        "processReadyMs": 211.20361699999194,
+        "importMs": 154.383298,
+        "appInitMs": 20.885807999999997,
+        "firstRequestMs": 7.841822000016691,
+        "processFirstResponseMs": 219.15849299999536
+      },
+      "workload": {
+        "durationSeconds": 10.00986,
+        "requests": 83696,
+        "bytes": 12470704,
+        "requestsPerSecond": 8361.355703,
+        "latencyP50Ms": 11.905,
+        "latencyP95Ms": 13.557,
+        "latencyP99Ms": 15.855,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "node",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 2,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:37879/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.65ms   12.06ms 236.38ms   98.38%\n    Req/Sec     7.45k     0.97k    9.99k    83.92%\n  Latency Distribution\n     50%    3.21ms\n     75%    3.52ms\n     90%    3.83ms\n     99%   59.14ms\n  147836 requests in 5.01s, 24.95MB read\nRequests/sec:  29493.03\nTransfer/sec:      4.98MB\nBENCH_RESULT {\"durationSeconds\":5.012574,\"requests\":147836,\"bytes\":26166972,\"requestsPerSecond\":29493.030926,\"latencyP50Ms\":3.212000,\"latencyP95Ms\":4.191000,\"latencyP99Ms\":59.142000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:37879/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.55ms    4.62ms 170.07ms   99.53%\n    Req/Sec     7.59k   737.17    13.29k    83.25%\n  Latency Distribution\n     50%    3.22ms\n     75%    3.52ms\n     90%    3.79ms\n     99%    4.19ms\n  301911 requests in 10.01s, 50.96MB read\nRequests/sec:  30151.59\nTransfer/sec:      5.09MB\nBENCH_RESULT {\"durationSeconds\":10.013104,\"requests\":301911,\"bytes\":53438247,\"requestsPerSecond\":30151.589357,\"latencyP50Ms\":3.221000,\"latencyP95Ms\":3.846000,\"latencyP99Ms\":4.191000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":37879,\"importMs\":37.10328,\"appInitMs\":3.5245939999999933}\n"
+      },
+      "startup": {
+        "processReadyMs": 84.02354600001127,
+        "importMs": 37.10328,
+        "appInitMs": 3.5245939999999933,
+        "firstRequestMs": 5.130876000010176,
+        "processFirstResponseMs": 89.30313600000227
+      },
+      "workload": {
+        "durationSeconds": 10.013104,
+        "requests": 301911,
+        "bytes": 53438247,
+        "requestsPerSecond": 30151.589357,
+        "latencyP50Ms": 3.221,
+        "latencyP95Ms": 3.846,
+        "latencyP99Ms": 4.191,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "nestjs-node",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 2,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:37845/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.78ms    2.29ms  32.58ms   84.41%\n    Req/Sec     1.95k   244.32     2.34k    74.50%\n  Latency Distribution\n     50%   12.49ms\n     75%   13.31ms\n     90%   15.03ms\n     99%   22.36ms\n  38912 requests in 5.02s, 5.53MB read\nRequests/sec:   7755.70\nTransfer/sec:      1.10MB\nBENCH_RESULT {\"durationSeconds\":5.017215,\"requests\":38912,\"bytes\":5797888,\"requestsPerSecond\":7755.697135,\"latencyP50Ms\":12.487000,\"latencyP95Ms\":16.244000,\"latencyP99Ms\":22.361000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:37845/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.22ms    1.25ms  26.42ms   83.44%\n    Req/Sec     2.04k   152.03     2.80k    79.75%\n  Latency Distribution\n     50%   12.00ms\n     75%   13.02ms\n     90%   13.21ms\n     99%   16.20ms\n  81287 requests in 10.03s, 11.55MB read\nRequests/sec:   8107.69\nTransfer/sec:      1.15MB\nBENCH_RESULT {\"durationSeconds\":10.025918,\"requests\":81287,\"bytes\":12111763,\"requestsPerSecond\":8107.686498,\"latencyP50Ms\":12.004000,\"latencyP95Ms\":14.052000,\"latencyP99Ms\":16.202000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":37845,\"importMs\":388.680684,\"appInitMs\":57.89865000000003}\n"
+      },
+      "startup": {
+        "processReadyMs": 482.34431799998856,
+        "importMs": 388.680684,
+        "appInitMs": 57.89865000000003,
+        "firstRequestMs": 7.282489000004716,
+        "processFirstResponseMs": 489.738903999998
+      },
+      "workload": {
+        "durationSeconds": 10.025918,
+        "requests": 81287,
+        "bytes": 12111763,
+        "requestsPerSecond": 8107.686498,
+        "latencyP50Ms": 12.004,
+        "latencyP95Ms": 14.052,
+        "latencyP99Ms": 16.202,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "holu",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 2,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:35201/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     5.61ms   15.71ms 279.96ms   98.13%\n    Req/Sec     6.61k   827.01     8.69k    89.45%\n  Latency Distribution\n     50%    3.73ms\n     75%    4.03ms\n     90%    4.36ms\n     99%   85.66ms\n  130976 requests in 5.01s, 22.11MB read\nRequests/sec:  26132.26\nTransfer/sec:      4.41MB\nBENCH_RESULT {\"durationSeconds\":5.012042,\"requests\":130976,\"bytes\":23182752,\"requestsPerSecond\":26132.263058,\"latencyP50Ms\":3.730000,\"latencyP95Ms\":4.520000,\"latencyP99Ms\":85.658000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:35201/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.00ms    5.92ms 197.62ms   99.44%\n    Req/Sec     6.87k   789.36    11.81k    85.25%\n  Latency Distribution\n     50%    3.70ms\n     75%    4.02ms\n     90%    4.13ms\n     99%    4.61ms\n  273450 requests in 10.01s, 46.16MB read\nRequests/sec:  27316.98\nTransfer/sec:      4.61MB\nBENCH_RESULT {\"durationSeconds\":10.010257,\"requests\":273450,\"bytes\":48400650,\"requestsPerSecond\":27316.980973,\"latencyP50Ms\":3.703000,\"latencyP95Ms\":4.253000,\"latencyP99Ms\":4.614000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":35201,\"importMs\":155.396805,\"appInitMs\":20.47031199999998}\n"
+      },
+      "startup": {
+        "processReadyMs": 212.21868099999847,
+        "importMs": 155.396805,
+        "appInitMs": 20.47031199999998,
+        "firstRequestMs": 7.97904199999175,
+        "processFirstResponseMs": 220.34646400000202
+      },
+      "workload": {
+        "durationSeconds": 10.010257,
+        "requests": 273450,
+        "bytes": 48400650,
+        "requestsPerSecond": 27316.980973,
+        "latencyP50Ms": 3.703,
+        "latencyP95Ms": 4.253,
+        "latencyP99Ms": 4.614,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "node",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 2,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:37835/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.64ms    1.81ms  27.68ms   84.83%\n    Req/Sec     2.14k   235.11     2.53k    77.50%\n  Latency Distribution\n     50%   11.43ms\n     75%   12.02ms\n     90%   13.43ms\n     99%   19.63ms\n  42521 requests in 5.01s, 6.04MB read\nRequests/sec:   8489.14\nTransfer/sec:      1.21MB\nBENCH_RESULT {\"durationSeconds\":5.008872,\"requests\":42521,\"bytes\":6335629,\"requestsPerSecond\":8489.136876,\"latencyP50Ms\":11.432000,\"latencyP95Ms\":14.374000,\"latencyP99Ms\":19.634000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:37835/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.24ms  746.88us  15.67ms   77.81%\n    Req/Sec     2.22k   108.54     2.46k    66.50%\n  Latency Distribution\n     50%   11.01ms\n     75%   11.92ms\n     90%   12.04ms\n     99%   12.90ms\n  88279 requests in 10.01s, 12.54MB read\nRequests/sec:   8815.65\nTransfer/sec:      1.25MB\nBENCH_RESULT {\"durationSeconds\":10.013897,\"requests\":88279,\"bytes\":13153571,\"requestsPerSecond\":8815.648893,\"latencyP50Ms\":11.005000,\"latencyP95Ms\":12.265000,\"latencyP99Ms\":12.895000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":37835,\"importMs\":36.07785499999999,\"appInitMs\":3.4871590000000054}\n"
+      },
+      "startup": {
+        "processReadyMs": 77.35912699997425,
+        "importMs": 36.07785499999999,
+        "appInitMs": 3.4871590000000054,
+        "firstRequestMs": 4.808779000013601,
+        "processFirstResponseMs": 82.28280399998766
+      },
+      "workload": {
+        "durationSeconds": 10.013897,
+        "requests": 88279,
+        "bytes": 13153571,
+        "requestsPerSecond": 8815.648893,
+        "latencyP50Ms": 11.005,
+        "latencyP95Ms": 12.265,
+        "latencyP99Ms": 12.895,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "fastify",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 2,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:39449/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     5.69ms   15.77ms 282.22ms   98.10%\n    Req/Sec     6.50k     0.89k    9.17k    79.40%\n  Latency Distribution\n     50%    3.77ms\n     75%    4.10ms\n     90%    4.44ms\n     99%   86.75ms\n  128721 requests in 5.01s, 21.73MB read\nRequests/sec:  25686.68\nTransfer/sec:      4.34MB\nBENCH_RESULT {\"durationSeconds\":5.011196,\"requests\":128721,\"bytes\":22783617,\"requestsPerSecond\":25686.682381,\"latencyP50Ms\":3.771000,\"latencyP95Ms\":4.765000,\"latencyP99Ms\":86.750000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:39449/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.86ms    5.76ms 197.57ms   99.46%\n    Req/Sec     7.10k     0.94k   13.78k    82.75%\n  Latency Distribution\n     50%    3.48ms\n     75%    3.83ms\n     90%    3.95ms\n     99%    4.55ms\n  282845 requests in 10.01s, 47.74MB read\nRequests/sec:  28247.15\nTransfer/sec:      4.77MB\nBENCH_RESULT {\"durationSeconds\":10.013223,\"requests\":282845,\"bytes\":50063565,\"requestsPerSecond\":28247.148795,\"latencyP50Ms\":3.480000,\"latencyP95Ms\":4.205000,\"latencyP99Ms\":4.554000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":39449,\"importMs\":74.93701000000001,\"appInitMs\":57.58128099999999}\n"
+      },
+      "startup": {
+        "processReadyMs": 172.94581100001233,
+        "importMs": 74.93701000000001,
+        "appInitMs": 57.58128099999999,
+        "firstRequestMs": 6.97655299998587,
+        "processFirstResponseMs": 180.06132000000798
+      },
+      "workload": {
+        "durationSeconds": 10.013223,
+        "requests": 282845,
+        "bytes": 50063565,
+        "requestsPerSecond": 28247.148795,
+        "latencyP50Ms": 3.48,
+        "latencyP95Ms": 4.205,
+        "latencyP99Ms": 4.554,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "fastify",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 3,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:43591/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.19ms    2.08ms  32.53ms   85.04%\n    Req/Sec     2.04k   259.90     2.53k    77.00%\n  Latency Distribution\n     50%   11.99ms\n     75%   12.84ms\n     90%   13.88ms\n     99%   21.60ms\n  40683 requests in 5.01s, 5.78MB read\nRequests/sec:   8117.29\nTransfer/sec:      1.15MB\nBENCH_RESULT {\"durationSeconds\":5.011895,\"requests\":40683,\"bytes\":6061767,\"requestsPerSecond\":8117.288970,\"latencyP50Ms\":11.994000,\"latencyP95Ms\":15.196000,\"latencyP99Ms\":21.600000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:43591/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.33ms    0.90ms  17.17ms   68.05%\n    Req/Sec     2.20k   128.67     2.53k    64.50%\n  Latency Distribution\n     50%   11.23ms\n     75%   12.15ms\n     90%   12.27ms\n     99%   13.23ms\n  87633 requests in 10.02s, 12.45MB read\nRequests/sec:   8748.44\nTransfer/sec:      1.24MB\nBENCH_RESULT {\"durationSeconds\":10.016985,\"requests\":87633,\"bytes\":13057317,\"requestsPerSecond\":8748.440773,\"latencyP50Ms\":11.225000,\"latencyP95Ms\":12.511000,\"latencyP99Ms\":13.235000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":43591,\"importMs\":70.419932,\"appInitMs\":56.810800999999984}\n"
+      },
+      "startup": {
+        "processReadyMs": 161.99429599998984,
+        "importMs": 70.419932,
+        "appInitMs": 56.810800999999984,
+        "firstRequestMs": 7.001743000000715,
+        "processFirstResponseMs": 169.085396999988
+      },
+      "workload": {
+        "durationSeconds": 10.016985,
+        "requests": 87633,
+        "bytes": 13057317,
+        "requestsPerSecond": 8748.440773,
+        "latencyP50Ms": 11.225,
+        "latencyP95Ms": 12.511,
+        "latencyP99Ms": 13.235,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "node",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 3,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:43847/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.86ms   13.06ms 243.26ms   98.33%\n    Req/Sec     7.28k     0.89k    9.16k    81.91%\n  Latency Distribution\n     50%    3.43ms\n     75%    3.65ms\n     90%    3.84ms\n     99%   66.38ms\n  144355 requests in 5.02s, 24.37MB read\nRequests/sec:  28784.43\nTransfer/sec:      4.86MB\nBENCH_RESULT {\"durationSeconds\":5.015038,\"requests\":144355,\"bytes\":25550835,\"requestsPerSecond\":28784.427954,\"latencyP50Ms\":3.432000,\"latencyP95Ms\":4.149000,\"latencyP99Ms\":66.378000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:43847/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.15ms    3.65ms 151.72ms   99.63%\n    Req/Sec     8.42k     1.20k   12.29k    73.50%\n  Latency Distribution\n     50%    3.11ms\n     75%    3.24ms\n     90%    3.48ms\n     99%    3.86ms\n  335187 requests in 10.01s, 56.58MB read\nRequests/sec:  33476.85\nTransfer/sec:      5.65MB\nBENCH_RESULT {\"durationSeconds\":10.012501,\"requests\":335187,\"bytes\":59328099,\"requestsPerSecond\":33476.850589,\"latencyP50Ms\":3.112000,\"latencyP95Ms\":3.534000,\"latencyP99Ms\":3.858000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":43847,\"importMs\":35.984185,\"appInitMs\":3.5050190000000043}\n"
+      },
+      "startup": {
+        "processReadyMs": 76.98397399997339,
+        "importMs": 35.984185,
+        "appInitMs": 3.5050190000000043,
+        "firstRequestMs": 4.853664999973262,
+        "processFirstResponseMs": 82.06643199999235
+      },
+      "workload": {
+        "durationSeconds": 10.012501,
+        "requests": 335187,
+        "bytes": 59328099,
+        "requestsPerSecond": 33476.850589,
+        "latencyP50Ms": 3.112,
+        "latencyP95Ms": 3.534,
+        "latencyP99Ms": 3.858,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "nestjs-node",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 3,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:34487/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     6.60ms   21.21ms 336.79ms   97.80%\n    Req/Sec     6.44k     1.34k    8.52k    69.85%\n  Latency Distribution\n     50%    3.91ms\n     75%    4.34ms\n     90%    4.69ms\n     99%  123.02ms\n  127485 requests in 5.01s, 21.52MB read\nRequests/sec:  25454.24\nTransfer/sec:      4.30MB\nBENCH_RESULT {\"durationSeconds\":5.008399,\"requests\":127485,\"bytes\":22564845,\"requestsPerSecond\":25454.241964,\"latencyP50Ms\":3.909000,\"latencyP95Ms\":5.394000,\"latencyP99Ms\":123.017000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:34487/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.51ms    5.26ms 179.11ms   99.46%\n    Req/Sec     5.96k   831.55    12.67k    89.00%\n  Latency Distribution\n     50%    4.33ms\n     75%    4.65ms\n     90%    4.69ms\n     99%    5.15ms\n  237171 requests in 10.01s, 40.03MB read\nRequests/sec:  23685.35\nTransfer/sec:      4.00MB\nBENCH_RESULT {\"durationSeconds\":10.013404,\"requests\":237171,\"bytes\":41979267,\"requestsPerSecond\":23685.352154,\"latencyP50Ms\":4.328000,\"latencyP95Ms\":4.715000,\"latencyP99Ms\":5.150000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":34487,\"importMs\":393.63766,\"appInitMs\":53.326164000000006}\n"
+      },
+      "startup": {
+        "processReadyMs": 489.408133000019,
+        "importMs": 393.63766,
+        "appInitMs": 53.326164000000006,
+        "firstRequestMs": 8.950350999948569,
+        "processFirstResponseMs": 498.5490620000055
+      },
+      "workload": {
+        "durationSeconds": 10.013404,
+        "requests": 237171,
+        "bytes": 41979267,
+        "requestsPerSecond": 23685.352154,
+        "latencyP50Ms": 4.328,
+        "latencyP95Ms": 4.715,
+        "latencyP99Ms": 5.15,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "holu",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 3,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:40611/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.99ms    1.88ms  28.83ms   84.13%\n    Req/Sec     2.08k   230.56     2.57k    81.00%\n  Latency Distribution\n     50%   11.36ms\n     75%   12.63ms\n     90%   13.64ms\n     99%   20.92ms\n  41374 requests in 5.01s, 5.88MB read\nRequests/sec:   8252.56\nTransfer/sec:      1.17MB\nBENCH_RESULT {\"durationSeconds\":5.013477,\"requests\":41374,\"bytes\":6164726,\"requestsPerSecond\":8252.556060,\"latencyP50Ms\":11.365000,\"latencyP95Ms\":15.192000,\"latencyP99Ms\":20.915000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:40611/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.17ms    1.35ms  23.59ms   74.05%\n    Req/Sec     2.23k   186.74     2.61k    55.00%\n  Latency Distribution\n     50%   11.24ms\n     75%   11.88ms\n     90%   12.57ms\n     99%   15.73ms\n  88774 requests in 10.01s, 12.61MB read\nRequests/sec:   8866.05\nTransfer/sec:      1.26MB\nBENCH_RESULT {\"durationSeconds\":10.012807,\"requests\":88774,\"bytes\":13227326,\"requestsPerSecond\":8866.045256,\"latencyP50Ms\":11.237000,\"latencyP95Ms\":12.957000,\"latencyP99Ms\":15.735000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":40611,\"importMs\":158.214327,\"appInitMs\":20.490220000000022}\n"
+      },
+      "startup": {
+        "processReadyMs": 219.9074869999895,
+        "importMs": 158.214327,
+        "appInitMs": 20.490220000000022,
+        "firstRequestMs": 8.19336099998327,
+        "processFirstResponseMs": 228.21159299998544
+      },
+      "workload": {
+        "durationSeconds": 10.012807,
+        "requests": 88774,
+        "bytes": 13227326,
+        "requestsPerSecond": 8866.045256,
+        "latencyP50Ms": 11.237,
+        "latencyP95Ms": 12.957,
+        "latencyP99Ms": 15.735,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "holu",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 3,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:44201/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     5.30ms   15.24ms 274.37ms   98.14%\n    Req/Sec     7.11k     1.21k    9.60k    73.23%\n  Latency Distribution\n     50%    3.45ms\n     75%    3.79ms\n     90%    4.29ms\n     99%   82.52ms\n  140372 requests in 5.01s, 23.69MB read\nRequests/sec:  28015.08\nTransfer/sec:      4.73MB\nBENCH_RESULT {\"durationSeconds\":5.010587,\"requests\":140372,\"bytes\":24845844,\"requestsPerSecond\":28015.080868,\"latencyP50Ms\":3.454000,\"latencyP95Ms\":4.613000,\"latencyP99Ms\":82.520000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:44201/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.75ms    5.89ms 198.81ms   99.46%\n    Req/Sec     7.36k     1.62k   34.77k    91.77%\n  Latency Distribution\n     50%    3.43ms\n     75%    3.77ms\n     90%    3.82ms\n     99%    4.26ms\n  293474 requests in 10.09s, 49.54MB read\nRequests/sec:  29075.95\nTransfer/sec:      4.91MB\nBENCH_RESULT {\"durationSeconds\":10.093359,\"requests\":293474,\"bytes\":51944898,\"requestsPerSecond\":29075.949840,\"latencyP50Ms\":3.430000,\"latencyP95Ms\":4.084000,\"latencyP99Ms\":4.262000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":44201,\"importMs\":156.184395,\"appInitMs\":20.588469000000003}\n"
+      },
+      "startup": {
+        "processReadyMs": 214.92341799999122,
+        "importMs": 156.184395,
+        "appInitMs": 20.588469000000003,
+        "firstRequestMs": 7.7811949999886565,
+        "processFirstResponseMs": 222.85633300000336
+      },
+      "workload": {
+        "durationSeconds": 10.093359,
+        "requests": 293474,
+        "bytes": 51944898,
+        "requestsPerSecond": 29075.94984,
+        "latencyP50Ms": 3.43,
+        "latencyP95Ms": 4.084,
+        "latencyP99Ms": 4.262,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "nestjs-node",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 3,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:33585/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.85ms    2.21ms  32.90ms   88.32%\n    Req/Sec     1.94k   238.18     2.27k    80.00%\n  Latency Distribution\n     50%   12.06ms\n     75%   13.73ms\n     90%   14.71ms\n     99%   23.50ms\n  38665 requests in 5.01s, 5.49MB read\nRequests/sec:   7717.63\nTransfer/sec:      1.10MB\nBENCH_RESULT {\"durationSeconds\":5.009958,\"requests\":38665,\"bytes\":5761085,\"requestsPerSecond\":7717.629569,\"latencyP50Ms\":12.061000,\"latencyP95Ms\":15.941000,\"latencyP99Ms\":23.498000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:33585/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.00ms    1.24ms  26.06ms   79.76%\n    Req/Sec     2.08k   130.92     2.50k    71.75%\n  Latency Distribution\n     50%   11.86ms\n     75%   12.38ms\n     90%   13.11ms\n     99%   15.88ms\n  82705 requests in 10.02s, 11.75MB read\nRequests/sec:   8252.94\nTransfer/sec:      1.17MB\nBENCH_RESULT {\"durationSeconds\":10.021279,\"requests\":82705,\"bytes\":12323045,\"requestsPerSecond\":8252.938572,\"latencyP50Ms\":11.862000,\"latencyP95Ms\":13.851000,\"latencyP99Ms\":15.878000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":33585,\"importMs\":391.15869399999997,\"appInitMs\":57.63109300000002}\n"
+      },
+      "startup": {
+        "processReadyMs": 485.9310740000219,
+        "importMs": 391.15869399999997,
+        "appInitMs": 57.63109300000002,
+        "firstRequestMs": 7.287590000021737,
+        "processFirstResponseMs": 493.35920700000133
+      },
+      "workload": {
+        "durationSeconds": 10.021279,
+        "requests": 82705,
+        "bytes": 12323045,
+        "requestsPerSecond": 8252.938572,
+        "latencyP50Ms": 11.862,
+        "latencyP95Ms": 13.851,
+        "latencyP99Ms": 15.878,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "node",
+      "scenario": "perRoute",
+      "profile": "close",
+      "repetition": 3,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:40339/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.86ms    1.80ms  27.78ms   84.29%\n    Req/Sec     2.10k   229.98     2.57k    77.50%\n  Latency Distribution\n     50%   11.63ms\n     75%   12.12ms\n     90%   13.69ms\n     99%   20.18ms\n  41809 requests in 5.01s, 5.94MB read\nRequests/sec:   8339.01\nTransfer/sec:      1.18MB\nBENCH_RESULT {\"durationSeconds\":5.013664,\"requests\":41809,\"bytes\":6229541,\"requestsPerSecond\":8339.011150,\"latencyP50Ms\":11.627000,\"latencyP95Ms\":14.671000,\"latencyP99Ms\":20.184000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:40339/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    11.24ms    0.96ms  15.95ms   74.12%\n    Req/Sec     2.22k   168.80     2.77k    72.25%\n  Latency Distribution\n     50%   11.23ms\n     75%   12.00ms\n     90%   12.25ms\n     99%   12.75ms\n  88309 requests in 10.01s, 12.55MB read\nRequests/sec:   8817.92\nTransfer/sec:      1.25MB\nBENCH_RESULT {\"durationSeconds\":10.014715,\"requests\":88309,\"bytes\":13158041,\"requestsPerSecond\":8817.924424,\"latencyP50Ms\":11.231000,\"latencyP95Ms\":12.412000,\"latencyP99Ms\":12.747000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":40339,\"importMs\":37.177378999999995,\"appInitMs\":3.588307999999998}\n"
+      },
+      "startup": {
+        "processReadyMs": 78.76587599999039,
+        "importMs": 37.177378999999995,
+        "appInitMs": 3.588307999999998,
+        "firstRequestMs": 5.315475000010338,
+        "processFirstResponseMs": 84.20454399997834
+      },
+      "workload": {
+        "durationSeconds": 10.014715,
+        "requests": 88309,
+        "bytes": 13158041,
+        "requestsPerSecond": 8817.924424,
+        "latencyP50Ms": 11.231,
+        "latencyP95Ms": 12.412,
+        "latencyP99Ms": 12.747,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    },
+    {
+      "framework": "fastify",
+      "scenario": "perRoute",
+      "profile": "keep-alive",
+      "repetition": 3,
+      "raw": {
+        "warmup": "Running 5s test @ http://127.0.0.1:40493/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     6.01ms   18.47ms 310.61ms   97.96%\n    Req/Sec     6.66k     1.13k    9.08k    81.41%\n  Latency Distribution\n     50%    3.77ms\n     75%    4.11ms\n     90%    4.42ms\n     99%  104.26ms\n  131897 requests in 5.01s, 22.26MB read\nRequests/sec:  26329.75\nTransfer/sec:      4.44MB\nBENCH_RESULT {\"durationSeconds\":5.009428,\"requests\":131897,\"bytes\":23345769,\"requestsPerSecond\":26329.752618,\"latencyP50Ms\":3.769000,\"latencyP95Ms\":4.815000,\"latencyP99Ms\":104.259000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "measurement": "Running 10s test @ http://127.0.0.1:40493/hello\n  4 threads and 100 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.92ms    4.59ms 160.27ms   99.50%\n    Req/Sec     6.84k     1.55k   34.64k    98.00%\n  Latency Distribution\n     50%    3.80ms\n     75%    3.88ms\n     90%    4.18ms\n     99%    4.62ms\n  272735 requests in 10.10s, 46.04MB read\nRequests/sec:  27015.84\nTransfer/sec:      4.56MB\nBENCH_RESULT {\"durationSeconds\":10.095372,\"requests\":272735,\"bytes\":48274095,\"requestsPerSecond\":27015.844488,\"latencyP50Ms\":3.795000,\"latencyP95Ms\":4.235000,\"latencyP99Ms\":4.624000,\"errors\":{\"connect\":0,\"read\":0,\"write\":0,\"status\":0,\"timeout\":0}}\n",
+        "server": "BENCH_READY {\"port\":40493,\"importMs\":76.24788699999999,\"appInitMs\":56.559218}\n"
+      },
+      "startup": {
+        "processReadyMs": 168.94247599999653,
+        "importMs": 76.24788699999999,
+        "appInitMs": 56.559218,
+        "firstRequestMs": 6.950725999951828,
+        "processFirstResponseMs": 176.02656699996442
+      },
+      "workload": {
+        "durationSeconds": 10.095372,
+        "requests": 272735,
+        "bytes": 48274095,
+        "requestsPerSecond": 27015.844488,
+        "latencyP50Ms": 3.795,
+        "latencyP95Ms": 4.235,
+        "latencyP99Ms": 4.624,
+        "errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "status": 0,
+          "timeout": 0
+        }
+      }
+    }
+  ],
+  "finishedAt": "2026-11-12T22:19:43.246Z"
+}

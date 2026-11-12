@@ -268,8 +268,13 @@ export async function writeReport(directory: string, report: Report): Promise<vo
   await writeFile(resolve(directory, 'chart.svg'), chart(report));
 }
 
-export async function regenerateReport(directory: string): Promise<void> {
+export async function readReport(directory: string): Promise<Report> {
   const report = JSON.parse(await readFile(resolve(directory, 'run.json'), 'utf8')) as Report;
   if (report.schemaVersion !== 1 || !Array.isArray(report.runs)) throw new Error('Unsupported benchmark report');
+  return report;
+}
+
+export async function regenerateReport(directory: string): Promise<void> {
+  const report = await readReport(directory);
   await writeReport(directory, report);
 }

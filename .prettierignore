@@ -1,5 +1,6 @@
 dist/
 node_modules/
 results/runs/
+results/published/
 package-lock.json
 .yarn/

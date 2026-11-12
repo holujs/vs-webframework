@@ -4,6 +4,18 @@ HTTP throughput and process startup benchmarks for Express, Fastify, Koa, Hapi,
 Holu, and NestJS with its Node, Express, and Fastify adapters. A plain `node:http`
 server provides a baseline. All applications are TypeScript compiled to ESM.
 
+## Latest published result
+
+<!-- benchmark:latest:start -->
+
+Measured: 2026-11-12T22:19:43.246Z · Node.js v26.13.1 · Mode: all.
+
+![Latest published benchmark](results/published/2026-11-12T22-19-43.246Z/chart.svg)
+
+[Full report](results/published/2026-11-12T22-19-43.246Z/summary.md) · [Raw results and environment](results/published/2026-11-12T22-19-43.246Z/run.json) · [All published results](results/published/)
+
+<!-- benchmark:latest:end -->
+
 ## Install and check
 
 Use the exact Node.js version in `.nvmrc` and npm version in `package.json`:
@@ -136,6 +148,47 @@ and escalates to killing a child that does not stop gracefully.
 ```bash
 npm run report -- results/runs/<experiment-directory>
 ```
+
+Publish the latest successful result and refresh the chart and links at the top of this README:
+
+```bash
+npm run results:publish
+# Optional: choose the source and/or publication name.
+npm run results:publish -- results/runs/<experiment-directory>
+npm run results:publish -- results/runs/<experiment-directory> <descriptive-name>
+npm run results:publish -- --name <descriptive-name>
+```
+
+Both arguments are optional. Without a source, the command selects the newest
+successful experiment from `results/runs/` and `results/published/`. Without a name,
+it uses the measurement timestamp. An identical already published dataset is
+reused, including after cloning the repository without local runs.
+
+If no successful experiment exists, the command first runs the compact example:
+Node.js, Fastify, NestJS (`platform-node`), and Holu, `perRoute`, both HTTP
+profiles, 5 seconds of warmup and 10 seconds of measurement, repeated 3 times in
+fresh processes. This takes about 6 minutes plus startup for the 8 cases.
+This is the project's practical minimum
+for an automatic illustrative comparison; the 1–2 second smoke runs are for
+verification. The 10-second measurement also matches
+[autocannon's default duration](https://github.com/mcollina/autocannon#usage).
+Three repetitions expose some run-to-run variation; inspect the saved min/max
+and use longer measurements or more repetitions when results vary substantially.
+[Node.js documents why fixed warmup cannot guarantee a stable optimization state](https://nodejs.org/api/bench.html).
+
+The result is copied into `results/published/<name>/` with its raw dataset and
+regenerated reports. Commit that directory and `README.md` together, then push
+them with your usual Git workflow. Existing datasets are never overwritten with
+different data. A failed or interrupted example retains its local diagnostics
+and does not publish results.
+
+The README selects the newest successful published experiment by `finishedAt`
+(or `startedAt` for older datasets), regardless of directory name or publication
+order. Local runs remain in `results/runs/` until the publication command selects them. Incomplete,
+empty, or failed experiments cannot be published with this command.
+
+After manually adding, removing, or regenerating published data, refresh the block
+with `npm run results:latest`. CI checks that it matches the published datasets.
 
 See [results/README.md](results/README.md) for publishing complete datasets. The
 root-level PNGs are historical artifacts without reproducible environment data.
