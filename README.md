@@ -8,11 +8,11 @@ server provides a baseline. All applications are TypeScript compiled to ESM.
 
 <!-- benchmark:latest:start -->
 
-Measured: 2026-11-12T22:19:43.246Z · Node.js v26.13.1 · Mode: all.
+Measured: 2026-11-17T19:39:59.846Z · Node.js v26.13.1 · Mode: all.
 
-![Latest published benchmark](results/published/2026-11-12T22-19-43.246Z/chart.svg)
+![Latest published benchmark](results/published/2026-11-17T19-39-59.846Z/chart.svg)
 
-[Full report](results/published/2026-11-12T22-19-43.246Z/summary.md) · [Raw results and environment](results/published/2026-11-12T22-19-43.246Z/run.json) · [All published results](results/published/)
+[Full report](results/published/2026-11-17T19-39-59.846Z/summary.md) · [Raw results and environment](results/published/2026-11-17T19-39-59.846Z/run.json) · [All published results](results/published/)
 
 <!-- benchmark:latest:end -->
 
