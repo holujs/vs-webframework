@@ -241,7 +241,7 @@ function chartData(report: ChartReport) {
 
 function chartPanel(report: ChartReport, group: ReturnType<typeof chartData>['groups'][number], throughput: boolean) {
   const value = (row: (typeof group.rows)[number]) => (throughput ? (row.requestsPerSecond ?? 0) : row.processReadyMs);
-  const plot = { left: 52, right: 588, top: 92, bottom: 332, height: 240 };
+  const plot = { left: 52, right: 588, bottom: 332, height: 240 };
   const maximum = Math.max(...group.rows.map(value)) || 1;
   const power = 10 ** Math.floor(Math.log10(maximum / 4));
   const step = ([1, 2, 2.5, 5, 10].find((factor) => factor * power >= maximum / 4) ?? 10) * power;
@@ -249,12 +249,20 @@ function chartPanel(report: ChartReport, group: ReturnType<typeof chartData>['gr
   const ceiling = intervals * step;
   const slot = (plot.right - plot.left) / group.rows.length;
   const barWidth = Math.min(64, slot * 0.66);
-  const rotateLabels = slot < 110;
-  const labels = group.rows.map((row) => frameworkLabels(row.framework, report));
+  const labels = group.rows.map((row) => {
+    const label = frameworkLabels(row.framework, report);
+    const nameLines = slot < 80 ? label.name.split(/(?<=-)/) : [label.name];
+    return { ...label, nameLines };
+  });
+  const nameY = plot.bottom + 18;
+  const nameLineHeight = 13;
+  const versionY = nameY + Math.max(...labels.map((label) => label.nameLines.length)) * nameLineHeight;
   const tickFormat = new Intl.NumberFormat('en-US', {
+    useGrouping: false,
     maximumFractionDigits: Math.max(0, -Math.floor(Math.log10(step))),
   });
   const numberFormat = new Intl.NumberFormat('en-US', {
+    useGrouping: false,
     minimumFractionDigits: throughput ? 0 : 2,
     maximumFractionDigits: throughput ? 0 : 2,
   });
@@ -279,9 +287,23 @@ function chartPanel(report: ChartReport, group: ReturnType<typeof chartData>['gr
       }
       const relative = comparisons.length ? ` (${comparisons.join('; ')})` : '';
       const label = `${format(value(row), throughput ? 0 : 2)}${throughput ? ' req/s' : ''}${relative}`;
-      const framework = labels[index] as ReturnType<typeof frameworkLabels>;
-      const transform = `translate(${center} ${plot.bottom + 24})${rotateLabels ? ' rotate(-45)' : ''}`;
-      return `<rect class="bar" data-framework="${escapeXml(row.framework)}" data-value="${value(row)}" x="${center - barWidth / 2}" y="${top}" width="${barWidth}" height="${height}" fill="#387ce2"><title>${escapeXml(framework.full)}: ${escapeXml(label)}</title><desc>${escapeXml(label)}</desc></rect><text class="value" x="${center}" y="${top - 10}" text-anchor="middle" font-size="14" font-weight="600">${numberFormat.format(value(row))}</text><text class="framework" transform="${transform}" text-anchor="${rotateLabels ? 'end' : 'middle'}" font-size="14"><tspan x="0">${escapeXml(framework.name)}</tspan><tspan x="0" dy="18" font-size="12" fill="#526171">${escapeXml(framework.version)}</tspan></text>`;
+      const result = numberFormat.format(value(row));
+      const fitsInside = height >= 17 && result.length * 6.2 + 4 <= barWidth;
+      const resultY = fitsInside ? top + 13 : top - 5;
+      const resultColor = fitsInside ? 'white' : '#526171';
+      const framework = labels[index] as (typeof labels)[number];
+      const name = framework.nameLines
+        .map(
+          (line, lineIndex) =>
+            `<tspan x="${center}" y="${nameY + lineIndex * nameLineHeight}">${escapeXml(line)}</tspan>`,
+        )
+        .join('');
+      return [
+        `<rect class="bar" data-framework="${escapeXml(row.framework)}" data-value="${value(row)}" x="${center - barWidth / 2}" y="${top}" width="${barWidth}" height="${height}" fill="#326fc8"><title>${escapeXml(framework.full)}: ${escapeXml(label)}</title><desc>${escapeXml(label)}</desc></rect>`,
+        `<text class="value" x="${center}" y="${resultY}" text-anchor="middle" font-size="11" fill="${resultColor}">${result}</text>`,
+        `<text class="framework" text-anchor="middle" font-size="11">${name}</text>`,
+        `<text x="${center}" y="${versionY}" text-anchor="middle" font-size="9" fill="#526171">${escapeXml(framework.version)}</text>`,
+      ].join('');
     })
     .join('');
   const options = report.options ?? {};
@@ -296,7 +318,7 @@ function chartPanel(report: ChartReport, group: ReturnType<typeof chartData>['gr
   ]
     .filter(Boolean)
     .flatMap(wrapChartLine);
-  const footerY = plot.bottom + (rotateLabels ? 132 : 72);
+  const footerY = versionY + 24;
   const context = footer
     .map(
       (line, index) =>

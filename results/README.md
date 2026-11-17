@@ -7,9 +7,10 @@ The runner writes each experiment into `results/runs/<UTC timestamp>/`:
 - `chart-<scenario>-<profile>.svg`: a separate vertical column chart for each scenario/profile pair, sorted by median throughput (highest first) or startup time (lowest first).
 - `chart.svg`: an overview containing all the individual charts.
 
-Each image is 600 px wide to match GitHub's file preview. Dark values appear
-above the columns. Full framework names and recorded versions use two-line labels
-below them; dense charts angle those labels instead of shrinking the text.
+Each image is 600 px wide to match GitHub's file preview. Values have no digit
+grouping and appear in white inside the top of each column. Short columns show
+their values above them. Framework names are horizontal and wrap when space is
+tight, with smaller version numbers below.
 Every plot starts at zero and uses its own labeled scale. The README embeds the
 individual images so each workload can be read independently.
 

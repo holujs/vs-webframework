@@ -141,10 +141,10 @@ exact installed dependency versions, lockfile hash, runtime/OS/CPU, commit and
 working-tree status, seed and workload parameters. Tables and charts are generated
 from these data; framework versions are not maintained by hand.
 
-Charts use vertical columns with values above them and framework names and
-versions below. Each scenario/profile has its own image and scale; the README
+Charts use vertical columns with compact values inside them and horizontal
+framework names and versions below. Each scenario/profile has its own image and scale; the README
 embeds these images separately. They are designed for GitHub's 600 px file preview.
-Dense charts angle the two-line labels to keep full framework names readable.
+Long framework names wrap in dense charts.
 `chart.svg` combines all groups for an overview. Run parameters and NestJS adapter
 versions appear below each plot; complete environment details remain in `run.json`.
 

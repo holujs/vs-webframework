@@ -273,9 +273,9 @@ test('shows scenario inclusion and skips from recorded selections and capabiliti
   assert.doesNotMatch(svg, /nestjs-express|nestjs-fastify|express,|fastify,/);
 });
 
-test('generates separate vertical charts with zero baselines and values above the bars', () => {
+test('generates separate charts with compact values inside bars that have room', () => {
   const generated = charts({
-    runs: [measuredRun('node', 100), measuredRun('holu', 0), measuredRun('holu', 10, 'close', 'request')],
+    runs: [measuredRun('node', 10_000), measuredRun('holu', 0), measuredRun('holu', 10, 'close', 'request')],
   });
   assert.deepEqual(
     generated.map((item) => item.filename),
@@ -285,15 +285,26 @@ test('generates separate vertical charts with zero baselines and values above th
     assert.match(item.svg, /width="600"[^>]*viewBox="0 0 600 \d+"/);
     assert.doesNotMatch(item.svg, /NaN|Infinity/);
     const bars = [...item.svg.matchAll(/<rect class="bar"[^>]* y="([^"]+)"[^>]* height="([^"]+)"/g)];
-    const values = [...item.svg.matchAll(/<text class="value"[^>]* y="([^"]+)"/g)];
+    const values = [...item.svg.matchAll(/<text class="value"[^>]* y="([^"]+)"[^>]* fill="([^"]+)">([^<]+)<\/text>/g)];
     assert.ok(bars.length > 0);
     assert.equal(bars.length, values.length);
     const baseline = Number(bars[0]?.[1]) + Number(bars[0]?.[2]);
     bars.forEach((bar, index) => {
-      assert.equal(Number(bar[1]) + Number(bar[2]), baseline);
-      assert.ok(Number(values[index]?.[1]) < Number(bar[1]));
+      const top = Number(bar[1]);
+      const height = Number(bar[2]);
+      const labelY = Number(values[index]?.[1]);
+      assert.equal(top + height, baseline);
+      assert.doesNotMatch(values[index]?.[3] ?? '', /,/);
+      if (height === 0) {
+        assert.ok(labelY < top);
+        assert.notEqual(values[index]?.[2], 'white');
+      } else {
+        assert.ok(labelY > top && labelY < baseline);
+        assert.equal(values[index]?.[2], 'white');
+      }
     });
   }
+  assert.match(generated[0]?.svg ?? '', />10000<\/text>/);
   assert.equal(charts({ runs: [] }).length, 0);
   assert.match(chart({ runs: [] }), /No successful measurements/);
 });
