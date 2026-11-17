@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { chart, median, summaries, type Run } from '../report.mjs';
+import { chart, charts, median, summaries, type Run } from '../report.mjs';
 import { errorCount, parseWorkload } from '../wrk.mjs';
 
 const metrics = {
@@ -34,11 +34,13 @@ function measuredRun(
 function chartGroups(runs: Run[]) {
   return [...chart({ runs }).matchAll(/<g aria-label="([^"]+)">([\s\S]*?)<\/g>/g)].map((match) => {
     const section = match[2] as string;
+    const bars = [...section.matchAll(/<rect class="bar"([^>]*)><title>[^<]*<\/title><desc>([^<]*)<\/desc><\/rect>/g)];
+    const attribute = (attributes: string, name: string) => attributes.match(new RegExp(`${name}="([^"]+)"`))?.[1];
     return {
       name: match[1],
-      frameworks: [...section.matchAll(/<text x="16" y="\d+">([^<]+)<\/text>/g)].map((item) => item[1]),
-      labels: [...section.matchAll(/<rect x="380"[^>]*\/><text[^>]*>([^<]*)<\/text>/g)].map((item) => item[1]),
-      widths: [...section.matchAll(/<rect x="380"[^>]*width="([^"]+)"/g)].map((item) => Number(item[1])),
+      frameworks: bars.map((bar) => attribute(bar[1] as string, 'data-framework')),
+      labels: bars.map((bar) => bar[2]),
+      heights: bars.map((bar) => Number(attribute(bar[1] as string, 'height'))),
     };
   });
 }
@@ -90,25 +92,25 @@ test('keeps chart rankings, leader gaps, previous gaps, and scales within each s
         '900 req/s (−10.0% vs previous; −10.0% vs leader)',
         '810 req/s (−10.0% vs previous; −19.0% vs leader)',
       ],
-      widths: [500, 450, 405],
+      heights: [240, 216, 194.4],
     },
     {
       name: 'perRoute / close (new connection per request)',
       frameworks: ['node', 'holu'],
       labels: ['100 req/s (leader)', '80 req/s (−20.0% vs previous; −20.0% vs leader)'],
-      widths: [500, 400],
+      heights: [240, 192],
     },
     {
       name: 'perRequest / keep-alive (connection reused)',
       frameworks: ['holu', 'nestjs-node'],
       labels: ['10000 req/s (leader)', '5000 req/s (−50.0% vs previous; −50.0% vs leader)'],
-      widths: [500, 250],
+      heights: [240, 120],
     },
     {
       name: 'perRequest / close (new connection per request)',
       frameworks: ['holu'],
       labels: ['30 req/s (leader)'],
-      widths: [500],
+      heights: [240],
     },
   ]);
   assert.deepEqual(runs, original);
@@ -139,13 +141,13 @@ test('sorts startup times independently within each HTTP profile and omits faile
         name: 'perRoute / keep-alive (connection reused)',
         frameworks: ['node', 'holu'],
         labels: ['2.00', '5.00'],
-        widths: [200, 500],
+        heights: [80, 200],
       },
       {
         name: 'perRoute / close (new connection per request)',
         frameworks: ['holu', 'node'],
         labels: ['10.00', '20.00'],
-        widths: [250, 500],
+        heights: [120, 240],
       },
     ],
   );
@@ -164,13 +166,13 @@ test('renders historical scenario names as perRoute and perRequest without chang
       name: 'perRoute / keep-alive (connection reused)',
       frameworks: ['node', 'holu'],
       labels: ['100 req/s (leader)', '90 req/s (−10.0% vs previous; −10.0% vs leader)'],
-      widths: [500, 450],
+      heights: [240, 216],
     },
     {
       name: 'perRequest / close (new connection per request)',
       frameworks: ['holu'],
       labels: ['90 req/s (leader)'],
-      widths: [500],
+      heights: [216],
     },
   ]);
   assert.deepEqual(
@@ -225,14 +227,14 @@ test('renders recorded framework versions and workload parameters without using 
     'nestjs-fastify 10.4 (fastify 4.28)',
     'hapi (version unknown)',
   ]) {
-    assert.ok(svg.includes(`>${label}</text>`), label);
+    assert.ok(svg.includes(`<title>${label}: `), label);
   }
   assert.ok(svg.includes('Node.js v20.11.1 · Mode: all · Repeats: 2 · Seed: 7'));
   assert.ok(svg.includes('Measurement: 2 s · Warmup: 0 s · wrk threads: 4 · Connections: 100'));
   assert.ok(svg.includes('Startup timeout: 12345 ms · Started: 2026-01-01T00:00:00.000Z · Status: partial'));
 });
 
-test('omits unused load parameters from startup-only chart headers', () => {
+test('omits unused load parameters from startup-only chart metadata', () => {
   const svg = chart({
     runs: [],
     options: {
@@ -269,4 +271,29 @@ test('shows scenario inclusion and skips from recorded selections and capabiliti
   assert.ok(svg.includes('[perRequest] Included: holu'));
   assert.ok(svg.includes('[perRequest] Skipped (not implemented): node, nestjs-node'));
   assert.doesNotMatch(svg, /nestjs-express|nestjs-fastify|express,|fastify,/);
+});
+
+test('generates separate vertical charts with zero baselines and values above the bars', () => {
+  const generated = charts({
+    runs: [measuredRun('node', 100), measuredRun('holu', 0), measuredRun('holu', 10, 'close', 'request')],
+  });
+  assert.deepEqual(
+    generated.map((item) => item.filename),
+    ['chart-perRoute-keep-alive.svg', 'chart-perRequest-close.svg'],
+  );
+  for (const item of generated) {
+    assert.match(item.svg, /width="600"[^>]*viewBox="0 0 600 \d+"/);
+    assert.doesNotMatch(item.svg, /NaN|Infinity/);
+    const bars = [...item.svg.matchAll(/<rect class="bar"[^>]* y="([^"]+)"[^>]* height="([^"]+)"/g)];
+    const values = [...item.svg.matchAll(/<text class="value"[^>]* y="([^"]+)"/g)];
+    assert.ok(bars.length > 0);
+    assert.equal(bars.length, values.length);
+    const baseline = Number(bars[0]?.[1]) + Number(bars[0]?.[2]);
+    bars.forEach((bar, index) => {
+      assert.equal(Number(bar[1]) + Number(bar[2]), baseline);
+      assert.ok(Number(values[index]?.[1]) < Number(bar[1]));
+    });
+  }
+  assert.equal(charts({ runs: [] }).length, 0);
+  assert.match(chart({ runs: [] }), /No successful measurements/);
 });

@@ -4,7 +4,14 @@ The runner writes each experiment into `results/runs/<UTC timestamp>/`:
 
 - `run.json`: environment, installed dependency versions, options, individual samples, raw server/wrk output, and errors.
 - `summary.md`: medians, minimum/maximum throughput, per-run latency percentiles, and failure counts.
-- `chart.svg`: generated chart with a separate section for each scenario/profile pair, sorted by median throughput (highest first) or startup time (lowest first) within each section.
+- `chart-<scenario>-<profile>.svg`: a separate vertical column chart for each scenario/profile pair, sorted by median throughput (highest first) or startup time (lowest first).
+- `chart.svg`: an overview containing all the individual charts.
+
+Each image is 600 px wide to match GitHub's file preview. Dark values appear
+above the columns. Full framework names and recorded versions use two-line labels
+below them; dense charts angle those labels instead of shrinking the text.
+Every plot starts at zero and uses its own labeled scale. The README embeds the
+individual images so each workload can be read independently.
 
 Charts include recorded framework versions as `major.minor`. Holu uses
 `@holu/core`, NestJS uses `@nestjs/core`, and NestJS Express/Fastify labels also
@@ -12,12 +19,13 @@ include the underlying Express/Fastify version. Versions come from the experimen
 saved package selection and installed dependency metadata. Full versions remain in
 `run.json` and `summary.md`; unavailable versions are marked as unknown.
 
-The header records the full Node.js version, mode, repeat count, seed, startup
-timeout, start time, and completion status. Throughput runs also show measurement
-and warmup seconds, wrk threads, and connections. Startup-only runs omit those
-unused load parameters.
+The compact footer records the Node.js version, repeat count, measurement duration,
+and NestJS adapter versions. Partial results are marked explicitly. Complete run
+parameters, including mode, seed, warmup, wrk threads/connections, startup timeout,
+start time, and completion status, remain in `run.json` and the SVG's accessible
+description. Startup-only charts omit unused load parameters.
 
-The chart header and the summary's scenario selection table list included and
+The SVG description and the summary's scenario selection table list included and
 skipped frameworks for each requested scenario. Only selected frameworks appear
 in these lists. Skips mean that the benchmark has no implementation of that
 scenario for the selected framework. These lists use the capabilities recorded
@@ -27,11 +35,11 @@ The description also explains each selected scenario: `perRoute` reuses a
 handler/controller across requests; `perRequest` creates a controller for each
 request.
 
-Each section has its own ranking and bar scale. Throughput labels mark the
-fastest result in that section as `leader`. Subsequent labels show the drop in
-req/s relative to the preceding result and the leader in the same section.
+Each chart has its own ranking and bar scale. When an SVG is opened directly, column tooltips mark the
+fastest result in that chart as `leader`. Other tooltips show the drop in
+req/s relative to the preceding result and the leader in the same chart.
 Results from different HTTP profiles or scenarios are never compared.
-For example, for results of 100, 90, and 81 req/s, the last label is
+For example, for results of 100, 90, and 81 req/s, the last tooltip contains
 `81 req/s (−10.0% vs previous; −19.0% vs leader)`. A 10% drop means 10% fewer
 requests per second. Percentages use unrounded medians; comparisons with a zero
 reference or unavailable throughput measurements are omitted.
@@ -71,7 +79,7 @@ the root README together, then push them to GitHub. The command does not perform
 Git commits or network uploads. Existing datasets cannot be overwritten with different data.
 
 Only completed, nonempty runs without failed samples or wrk errors are accepted.
-The README embeds the chart and links to the report and raw JSON from the newest
+The README embeds the individual charts and links to the report and raw JSON from the newest
 successful published experiment, ordered by `finishedAt` with `startedAt` as a
 fallback. Publishing an older experiment preserves the newer README selection.
 

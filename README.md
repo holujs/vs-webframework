@@ -10,7 +10,9 @@ server provides a baseline. All applications are TypeScript compiled to ESM.
 
 Measured: 2026-11-17T19:39:59.846Z · Node.js v26.13.1 · Mode: all.
 
-![Latest published benchmark](results/published/2026-11-17T19-39-59.846Z/chart.svg)
+![perRoute / keep-alive (connection reused)](results/published/2026-11-17T19-39-59.846Z/chart-perRoute-keep-alive.svg)
+
+![perRoute / close (new connection per request)](results/published/2026-11-17T19-39-59.846Z/chart-perRoute-close.svg)
 
 [Full report](results/published/2026-11-17T19-39-59.846Z/summary.md) · [Raw results and environment](results/published/2026-11-17T19-39-59.846Z/run.json) · [All published results](results/published/)
 
@@ -93,7 +95,7 @@ summaries use the new names, including when reading historical datasets.
 For `perRequest`, the benchmark includes `holu`, `nestjs-node`, `nestjs-express`,
 and `nestjs-fastify`. It skips `node`, `express`, `koa`, `fastify`, and `hapi`
 when selected, because this benchmark has no `perRequest` implementation for them.
-The console, `summary.md`, and `chart.svg` explicitly list both groups; supported
+The console and `summary.md` explicitly list both groups; supported
 frameworks outside the `--frameworks` selection are not added automatically.
 
 Each process registers exactly one scenario route. The response contract is
@@ -131,12 +133,20 @@ startup diagnostics. Startup-only mode does not invoke wrk or warm up the server
 
 ## Results
 
-Each experiment writes `run.json`, `summary.md`, and `chart.svg` to
+Each experiment writes `run.json`, `summary.md`, `chart.svg`, and separate
+`chart-<scenario>-<profile>.svg` images to
 `results/runs/<UTC timestamp>/`. Use `--output <directory>` to choose another
 directory. JSON includes raw wrk/server output, every repetition, error counts,
 exact installed dependency versions, lockfile hash, runtime/OS/CPU, commit and
 working-tree status, seed and workload parameters. Tables and charts are generated
 from these data; framework versions are not maintained by hand.
+
+Charts use vertical columns with values above them and framework names and
+versions below. Each scenario/profile has its own image and scale; the README
+embeds these images separately. They are designed for GitHub's 600 px file preview.
+Dense charts angle the two-line labels to keep full framework names readable.
+`chart.svg` combines all groups for an overview. Run parameters and NestJS adapter
+versions appear below each plot; complete environment details remain in `run.json`.
 
 The report shows median throughput and startup, throughput min/max, and the
 median of each run's p95/p99 latency. These are not pooled latency percentiles.

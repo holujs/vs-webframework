@@ -94,6 +94,8 @@ test('publishes the complete dataset and preserves a newer selection when publis
   const { directory, repository } = await workspace(context);
   const source = join(directory, 'source');
   const newer = report('2026-11-12T10:00:00.000Z');
+  newer.runs.push({ ...(newer.runs[0] as Report['runs'][number]), profile: 'close' });
+  newer.options.profiles = ['keep-alive', 'close'];
   await writeReport(source, newer);
   await writeFile(join(source, 'notes.txt'), 'Recorded experiment notes');
   const original = await readFile(join(source, 'run.json'), 'utf8');
@@ -105,7 +107,12 @@ test('publishes the complete dataset and preserves a newer selection when publis
   assert.match(await readFile(join(destination, 'chart.svg'), 'utf8'), /Node.js v20.11.1/);
   assert.equal(await readFile(join(source, 'run.json'), 'utf8'), original);
   const readme = await readFile(join(repository, 'README.md'), 'utf8');
-  assert.match(readme, /results\/published\/a-newer\/chart.svg/);
+  for (const profile of ['keep-alive', 'close']) {
+    const filename = `chart-perRoute-${profile}.svg`;
+    assert.ok(readme.includes(`results/published/a-newer/${filename}`));
+    assert.match(await readFile(join(destination, filename), 'utf8'), /class="bar"/);
+  }
+  assert.doesNotMatch(readme, /!\[[^\]]*\]\([^)]*\/chart\.svg\)/);
   assert.match(readme, /results\/published\/a-newer\/run.json/);
   assert.match(readme, /Measured: 2026-11-12T10:00:00.000Z/);
 
@@ -250,7 +257,10 @@ test('honors an explicit source and permits an automatic name or a named automat
   assert.equal(selected.name, '2026-11-01T10-00-00.000Z');
   const automatic = await publishSelectedResult(repository, { name: 'current' }, noExample);
   assert.deepEqual(automatic, { name: 'current', created: true, generated: false });
-  assert.match(await readFile(join(repository, 'README.md'), 'utf8'), /results\/published\/current\/chart.svg/);
+  assert.match(
+    await readFile(join(repository, 'README.md'), 'utf8'),
+    /results\/published\/current\/chart-perRoute-keep-alive.svg/,
+  );
   await assert.rejects(publishSelectedResult(repository, { source: join(directory, 'missing') }, noExample), {
     code: 'ENOENT',
   });
@@ -288,4 +298,20 @@ test('the compact example retains warmup and repeats for Node.js, Fastify, NestJ
     options.frameworks.map((target) => target.name),
     ['node', 'fastify', 'nestjs-node', 'holu'],
   );
+});
+
+test('regeneration removes obsolete group charts while preserving other files and raw samples', async (context) => {
+  const { directory } = await workspace(context);
+  const source = join(directory, 'source');
+  const recorded = report('2026-11-12T10:00:00.000Z');
+  recorded.runs.push({ ...(recorded.runs[0] as Report['runs'][number]), profile: 'close' });
+  await writeReport(source, recorded);
+  await writeFile(join(source, 'notes.svg'), 'User notes');
+  assert.ok((await readdir(source)).includes('chart-perRoute-close.svg'));
+  recorded.runs = recorded.runs.filter((run) => run.profile === 'keep-alive');
+  await writeReport(source, recorded);
+  assert.ok(!(await readdir(source)).includes('chart-perRoute-close.svg'));
+  assert.ok((await readdir(source)).includes('chart-perRoute-keep-alive.svg'));
+  assert.equal(await readFile(join(source, 'notes.svg'), 'utf8'), 'User notes');
+  assert.deepEqual(JSON.parse(await readFile(join(source, 'run.json'), 'utf8')), recorded);
 });

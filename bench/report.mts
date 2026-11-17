@@ -1,4 +1,4 @@
-import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { parseScenario, profiles, scenarios, type Profile, type Scenario } from '../apps/shared/config.mjs';
 import type { Metadata } from './metadata.mjs';
@@ -155,22 +155,27 @@ function majorMinor(version: string | undefined): string | undefined {
   return version?.match(/^v?(\d+\.\d+)(?:\.|$|-|\+)/)?.[1];
 }
 
-function frameworkLabel(framework: string, report: ChartReport): string {
-  if (!report.metadata) return framework;
+function frameworkLabels(framework: string, report: ChartReport) {
+  if (!report.metadata) return { name: framework, version: '', full: framework, adapter: '' };
   const selections = report.options?.frameworks as { name: string; packages: string[] }[] | undefined;
   const packages = selections?.find((target) => target.name === framework)?.packages ?? [];
   const primary = packages.includes('@nestjs/core') ? '@nestjs/core' : packages[0];
   const version = majorMinor(
     framework === 'node' ? report.metadata.node : report.metadata.dependencyTree[`node_modules/${primary}`],
   );
-  if (!version) return `${framework} (version unknown)`;
+  if (!version) return { name: framework, version: 'unknown', full: `${framework} (version unknown)`, adapter: '' };
   const adapters = packages
     .filter((name) => name !== primary && (name === 'express' || name === 'fastify'))
     .flatMap((name) => {
       const adapterVersion = majorMinor(report.metadata?.dependencyTree[`node_modules/${name}`]);
       return adapterVersion ? [`${name} ${adapterVersion}`] : [];
     });
-  return `${framework} ${version}${adapters.length ? ` (${adapters.join(', ')})` : ''}`;
+  return {
+    name: framework,
+    version,
+    full: `${framework} ${version}${adapters.length ? ` (${adapters.join(', ')})` : ''}`,
+    adapter: adapters.length ? `${framework}: ${adapters.join(', ')}` : '',
+  };
 }
 
 function chartDetails(report: ChartReport): string[] {
@@ -206,57 +211,135 @@ const profileLabels: Readonly<Record<Profile, string>> = {
   close: 'close (new connection per request)',
 };
 
-export function chart(report: ChartReport): string {
+function wrapChartLine(line: string): string[] {
+  const lines: string[] = [];
+  for (const word of line.split(' ')) {
+    const last = lines.length - 1;
+    if (last < 0 || `${lines[last]} ${word}`.length > 86) lines.push(word);
+    else lines[last] += ` ${word}`;
+  }
+  return lines;
+}
+
+function chartData(report: ChartReport) {
   const successful = summaries(report).filter((row) => row.samples > 0);
   const throughput = successful.some((row) => row.requestsPerSecond !== null);
   const rows = successful.filter((row) => !throughput || row.requestsPerSecond !== null);
   const value = (row: (typeof rows)[number]) => (throughput ? (row.requestsPerSecond ?? 0) : row.processReadyMs);
   const groups = scenarios.flatMap((scenario) =>
     profiles.map((profile) => ({
+      scenario,
+      profile,
       name: `${scenario} / ${profileLabels[profile]}`,
-      rows: rows.filter((row) => row.scenario === scenario && row.profile === profile),
+      rows: rows
+        .filter((row) => row.scenario === scenario && row.profile === profile)
+        .sort((a, b) => (throughput ? value(b) - value(a) : value(a) - value(b)) || a.name.localeCompare(b.name)),
     })),
   );
-  const details = chartDetails(report);
-  const context = details
-    .map((line, index) => `<text x="16" y="${50 + index * 20}">${escapeXml(line)}</text>`)
-    .join('');
-  const noteY = 50 + details.length * 20;
-  let y = noteY + 28;
-  const sections = groups
-    .filter((group) => group.rows.length > 0)
-    .map((group) => {
-      group.rows.sort(
-        (a, b) => (throughput ? value(b) - value(a) : value(a) - value(b)) || a.name.localeCompare(b.name),
-      );
-      const leaderRate = group.rows[0]?.requestsPerSecond ?? 0;
-      const maximum = Math.max(...group.rows.map(value)) || 1;
-      const heading = `<text x="16" y="${y}" font-size="16" font-weight="600">${escapeXml(group.name)}</text>`;
-      y += 16;
-      const bars = group.rows.map((row, index) => {
-        const barY = y;
-        y += 32;
-        const width = (value(row) / maximum) * 500;
-        const previousRate = group.rows[index - 1]?.requestsPerSecond ?? 0;
-        const comparisons: string[] = [];
-        if (throughput && row.requestsPerSecond !== null) {
-          if (index === 0) {
-            comparisons.push('leader');
-          } else {
-            if (previousRate > 0)
-              comparisons.push(`${percentageDrop(row.requestsPerSecond, previousRate)} vs previous`);
-            if (leaderRate > 0) comparisons.push(`${percentageDrop(row.requestsPerSecond, leaderRate)} vs leader`);
-          }
+  return { throughput, groups: groups.filter((group) => group.rows.length > 0) };
+}
+
+function chartPanel(report: ChartReport, group: ReturnType<typeof chartData>['groups'][number], throughput: boolean) {
+  const value = (row: (typeof group.rows)[number]) => (throughput ? (row.requestsPerSecond ?? 0) : row.processReadyMs);
+  const plot = { left: 52, right: 588, top: 92, bottom: 332, height: 240 };
+  const maximum = Math.max(...group.rows.map(value)) || 1;
+  const power = 10 ** Math.floor(Math.log10(maximum / 4));
+  const step = ([1, 2, 2.5, 5, 10].find((factor) => factor * power >= maximum / 4) ?? 10) * power;
+  const intervals = Math.ceil(maximum / step);
+  const ceiling = intervals * step;
+  const slot = (plot.right - plot.left) / group.rows.length;
+  const barWidth = Math.min(64, slot * 0.66);
+  const rotateLabels = slot < 110;
+  const labels = group.rows.map((row) => frameworkLabels(row.framework, report));
+  const tickFormat = new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: Math.max(0, -Math.floor(Math.log10(step))),
+  });
+  const numberFormat = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: throughput ? 0 : 2,
+    maximumFractionDigits: throughput ? 0 : 2,
+  });
+  const grid = Array.from({ length: intervals + 1 }, (_, index) => {
+    const y = plot.bottom - (index / intervals) * plot.height;
+    return `<line x1="${plot.left}" x2="${plot.right}" y1="${y}" y2="${y}" stroke="#dce2e8"/><text x="${plot.left - 8}" y="${y + 4}" text-anchor="end" font-size="12" fill="#526171">${tickFormat.format(index * step)}</text>`;
+  }).join('');
+  const leaderRate = group.rows[0]?.requestsPerSecond ?? 0;
+  const bars = group.rows
+    .map((row, index) => {
+      const center = plot.left + slot * (index + 0.5);
+      const height = Number(((value(row) / ceiling) * plot.height).toFixed(4));
+      const top = plot.bottom - height;
+      const previousRate = group.rows[index - 1]?.requestsPerSecond ?? 0;
+      const comparisons: string[] = [];
+      if (throughput && row.requestsPerSecond !== null) {
+        if (index === 0) comparisons.push('leader');
+        else {
+          if (previousRate > 0) comparisons.push(`${percentageDrop(row.requestsPerSecond, previousRate)} vs previous`);
+          if (leaderRate > 0) comparisons.push(`${percentageDrop(row.requestsPerSecond, leaderRate)} vs leader`);
         }
-        const relative = comparisons.length ? ` (${comparisons.join('; ')})` : '';
-        const label = `${format(value(row), throughput ? 0 : 2)}${throughput ? ' req/s' : ''}${relative}`;
-        return `<text x="16" y="${barY + 16}">${escapeXml(frameworkLabel(row.framework, report))}</text><rect x="380" y="${barY}" width="${width}" height="23" fill="#2673c9"/><text x="${390 + width}" y="${barY + 16}">${label}</text>`;
-      });
-      y += 24;
-      return `<g aria-label="${escapeXml(group.name)}">${heading}${bars.join('')}</g>`;
-    });
-  const height = Math.max(80, y);
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${throughput ? 1280 : 1000}" height="${height}" role="img" aria-label="Benchmark medians"><rect width="100%" height="100%" fill="white"/><g font-family="sans-serif" font-size="13" fill="#17212b"><text x="16" y="28" font-size="18">${throughput ? 'Median requests per second (higher is better)' : 'Median process to ready, ms (lower is better)'}</text>${context}<text x="16" y="${noteY}">Rankings, comparisons, and bar scales are per scenario/profile.</text>${sections.join('')}</g></svg>\n`;
+      }
+      const relative = comparisons.length ? ` (${comparisons.join('; ')})` : '';
+      const label = `${format(value(row), throughput ? 0 : 2)}${throughput ? ' req/s' : ''}${relative}`;
+      const framework = labels[index] as ReturnType<typeof frameworkLabels>;
+      const transform = `translate(${center} ${plot.bottom + 24})${rotateLabels ? ' rotate(-45)' : ''}`;
+      return `<rect class="bar" data-framework="${escapeXml(row.framework)}" data-value="${value(row)}" x="${center - barWidth / 2}" y="${top}" width="${barWidth}" height="${height}" fill="#387ce2"><title>${escapeXml(framework.full)}: ${escapeXml(label)}</title><desc>${escapeXml(label)}</desc></rect><text class="value" x="${center}" y="${top - 10}" text-anchor="middle" font-size="14" font-weight="600">${numberFormat.format(value(row))}</text><text class="framework" transform="${transform}" text-anchor="${rotateLabels ? 'end' : 'middle'}" font-size="14"><tspan x="0">${escapeXml(framework.name)}</tspan><tspan x="0" dy="18" font-size="12" fill="#526171">${escapeXml(framework.version)}</tspan></text>`;
+    })
+    .join('');
+  const options = report.options ?? {};
+  const footer = [
+    [
+      ...(report.metadata ? [`Node.js ${report.metadata.node}`] : []),
+      ...(options.repeats === undefined ? [] : [`Repeats: ${String(options.repeats)}`]),
+      ...(!throughput || options.duration === undefined ? [] : [`Measurement: ${String(options.duration)} s`]),
+      ...(report.complete === false ? ['Partial result'] : []),
+    ].join(' · '),
+    ...labels.map((label) => label.adapter).filter(Boolean),
+  ]
+    .filter(Boolean)
+    .flatMap(wrapChartLine);
+  const footerY = plot.bottom + (rotateLabels ? 132 : 72);
+  const context = footer
+    .map(
+      (line, index) =>
+        `<text x="16" y="${footerY + index * 18}" font-size="12" fill="#526171">${escapeXml(line)}</text>`,
+    )
+    .join('');
+  const caption = throughput ? 'Median requests/s · higher is better' : 'Median process to ready, ms · lower is better';
+  return {
+    height: footerY + Math.max(1, footer.length) * 18 + 12,
+    svg: `<g aria-label="${escapeXml(group.name)}"><text x="16" y="28" font-size="20" font-weight="600">${escapeXml(group.name)}</text><text x="16" y="52" font-size="14" fill="#526171">${caption}</text>${grid}${bars}${context}</g>`,
+  };
+}
+
+function chartDocument(report: ChartReport, panels: { height: number; svg: string }[]): string {
+  let height = 0;
+  const content = panels
+    .map((panel) => {
+      const svg = `<g transform="translate(0 ${height})">${panel.svg}</g>`;
+      height += panel.height;
+      return svg;
+    })
+    .join('');
+  height = Math.max(100, height);
+  const empty = panels.length ? '' : '<text x="16" y="40" font-size="16">No successful measurements yet.</text>';
+  // Use GitHub's preview width directly, so labels are never scaled down.
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="${height}" viewBox="0 0 600 ${height}" role="img" aria-label="Benchmark medians" font-family="Arial, sans-serif" fill="#17212b"><title>Benchmark medians</title><desc>${escapeXml(chartDetails(report).join('\n'))}</desc><rect width="100%" height="100%" fill="white"/>${content}${empty}</svg>\n`;
+}
+
+export function charts(report: ChartReport) {
+  const { throughput, groups } = chartData(report);
+  return groups.map((group) => ({
+    filename: `chart-${group.scenario}-${group.profile}.svg`,
+    title: group.name,
+    svg: chartDocument(report, [chartPanel(report, group, throughput)]),
+  }));
+}
+
+export function chart(report: ChartReport): string {
+  const { throughput, groups } = chartData(report);
+  return chartDocument(
+    report,
+    groups.map((group) => chartPanel(report, group, throughput)),
+  );
 }
 
 export async function writeReport(directory: string, report: Report): Promise<void> {
@@ -266,6 +349,15 @@ export async function writeReport(directory: string, report: Report): Promise<vo
   await rename(destination + '.tmp', destination);
   await writeFile(resolve(directory, 'summary.md'), markdown(report));
   await writeFile(resolve(directory, 'chart.svg'), chart(report));
+  const generated = charts(report);
+  for (const item of generated) await writeFile(resolve(directory, item.filename), item.svg);
+  for (const scenario of scenarios) {
+    for (const profile of profiles) {
+      const filename = `chart-${scenario}-${profile}.svg`;
+      if (!generated.some((item) => item.filename === filename))
+        await rm(resolve(directory, filename), { force: true });
+    }
+  }
 }
 
 export async function readReport(directory: string): Promise<Report> {

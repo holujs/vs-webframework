@@ -2,7 +2,7 @@ import { cp, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/pr
 import { isAbsolute, join, relative, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { format, resolveConfig } from 'prettier';
-import { readReport, regenerateReport, type Report } from './report.mjs';
+import { charts, readReport, regenerateReport, type Report } from './report.mjs';
 import { runExampleBenchmark } from './presets.mjs';
 
 const startMarker = '<!-- benchmark:latest:start -->';
@@ -115,8 +115,7 @@ function latestBlock(publication: Publication | undefined): string {
   return [
     `Measured: ${new Date(publication.measuredAt).toISOString()} · Node.js ${report.metadata.node} · Mode: ${String(report.options.mode)}.`,
     '',
-    `![Latest published benchmark](${directory}/chart.svg)`,
-    '',
+    ...charts(report).flatMap((item) => [`![${item.title}](${directory}/${item.filename})`, '']),
     `[Full report](${directory}/summary.md) · [Raw results and environment](${directory}/run.json) · [All published results](results/published/)`,
   ].join('\n');
 }
